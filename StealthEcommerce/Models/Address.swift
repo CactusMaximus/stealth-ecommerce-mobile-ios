@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Model for Address
 struct Address: Codable {
     let street: String
     let city: String

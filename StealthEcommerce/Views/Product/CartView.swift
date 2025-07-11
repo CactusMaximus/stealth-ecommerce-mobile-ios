@@ -48,12 +48,7 @@ struct CartView: View {
    
     
     func handleCheckout() {
-//        if username.isEmpty || password.isEmpty {
-//            loginMessage = "Please enter both username and password."
-//        } else {
-//            loginMessage = "Logging in as \(username)..."
-//            // Simulate login process
-//        }
+        #warning("Todo")
     }
     
     var orderItem: some View {

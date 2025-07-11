@@ -37,12 +37,7 @@ struct ProductDetailView: View {
     }
     
     func handleAddToCart() {
-//        if username.isEmpty || password.isEmpty {
-//            loginMessage = "Please enter both username and password."
-//        } else {
-//            loginMessage = "Logging in as \(username)..."
-//            // Simulate login process
-//        }
+        #warning("Todo")
     }
 }
 

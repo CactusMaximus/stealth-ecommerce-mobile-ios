@@ -5,6 +5,7 @@
 //  Created by Shamith Ramdhani on 2025/07/10.
 //
 
+//Model for User Request
 struct User: Codable {
     let email: String
     let password: String
@@ -13,6 +14,7 @@ struct User: Codable {
     let address: Address
 }
 
+//Model for User Response
 struct UserResponse: Decodable {
     let email: String
     let firstName: String

@@ -66,9 +66,6 @@ struct LoginView: View {
                     Text(message)
                         .foregroundColor(.red)
                         .padding(.top)
-                    //                    DispatchQueue.main.async {
-                    
-                    //                    }
                 }
                 
                 Button(action: handleLogin) {

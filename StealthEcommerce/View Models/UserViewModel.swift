@@ -17,8 +17,8 @@ class UserViewModel: ObservableObject {
         self.networkService = networkService
     }
     
+    //POST User - Create a user
     func createUser(user: User) {
-//        networkRequest(url: "http://localhost:3000/api/users", user: user)
         networkService?.request(url: "http://localhost:3000/api/users", method: .post, body: user) { (result: Result<UserResponse, Error>) in
             
             switch result {
@@ -36,8 +36,8 @@ class UserViewModel: ObservableObject {
         }
     }
     
+    //POST User - Login user
     func loginUser(user: User) {
-//        networkRequest(url:  "http://localhost:3000/api/users/login", user: user)
         networkService?.request(url: "http://localhost:3000/api/users/login", method: .post, body: user) { (result: Result<UserResponse, Error>) in
             
             switch result {

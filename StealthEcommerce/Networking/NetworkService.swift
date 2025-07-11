@@ -6,6 +6,7 @@
 //
 import Foundation
 
+// Define supported HTTP methods
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -67,6 +68,7 @@ class NetworkService {
         }.resume()
     }
 
+    //Error enum
     enum NetworkError: Error {
         case invalidURL
         case encodingFailed

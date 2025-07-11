@@ -11,46 +11,47 @@ class UserViewModel: ObservableObject {
     
     @Published var message: String?
     
+    private var networkService: NetworkService?
+    
+    init(networkService: NetworkService = NetworkService.shared) {
+        self.networkService = networkService
+    }
+    
     func createUser(user: User) {
-        networkRequest(url: "http://localhost:3000/api/users", user: user)
+//        networkRequest(url: "http://localhost:3000/api/users", user: user)
+        networkService?.request(url: "http://localhost:3000/api/users", method: .post, body: user) { (result: Result<UserResponse, Error>) in
+            
+            switch result {
+               case .success(let user):
+                DispatchQueue.main.async(execute: {
+                    self.message = "Success"
+                })
+                debugPrint("Registered user:", user)
+               case .failure(let error):
+                DispatchQueue.main.async(execute: {
+                    self.message = "Failure"
+                })
+                debugPrint("Registered error:", error.localizedDescription)
+               }
+        }
     }
     
     func loginUser(user: User) {
-        networkRequest(url:  "http://localhost:3000/api/users/login", user: user)
-    }
-    
-    private func networkRequest(url: String, user: User) {
-        guard let url = URL(string: url) else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        do {
-            let jsonData = try JSONEncoder().encode(user)
-            request.httpBody = jsonData
-        } catch {
-            print("Encoding error:\(error)")
-            return
+//        networkRequest(url:  "http://localhost:3000/api/users/login", user: user)
+        networkService?.request(url: "http://localhost:3000/api/users/login", method: .post, body: user) { (result: Result<UserResponse, Error>) in
+            
+            switch result {
+               case .success(let user):
+                DispatchQueue.main.async(execute: {
+                    self.message = "Success"
+                })
+                debugPrint("Logged in user:", user)
+               case .failure(let error):
+                DispatchQueue.main.async(execute: {
+                    self.message = "Failure"
+                })
+                debugPrint("Login error:", error.localizedDescription)
+               }
         }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data else {
-                print("Network error\(error?.localizedDescription ?? "Unknown")")
-                return
-            }
-            
-            if let responseString = String(data: data, encoding: .utf8) {
-                DispatchQueue.main.async {
-                    self.message = "Response: \(responseString)"
-                }
-            }
-        }.resume()
     }
 }

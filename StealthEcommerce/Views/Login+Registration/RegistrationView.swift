@@ -74,7 +74,12 @@ struct RegistrationView: View {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if let message = viewModel.message {
-                navigateToLogin = true
+                if message.contains("Success") {
+                    navigateToLogin = true
+                } else {
+                    debugPrint("Failure")
+                }
+               
             }
         }
     }

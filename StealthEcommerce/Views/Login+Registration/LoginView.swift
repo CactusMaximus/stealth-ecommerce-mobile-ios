@@ -98,7 +98,7 @@ struct LoginView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if let message = viewModel.message {
                     debugPrint(message)
-                    if !message.contains("Invalid") {
+                    if message.contains("Success") {
                         goToHome = true
                     } else {
                         loginMessage = "Invalid details"

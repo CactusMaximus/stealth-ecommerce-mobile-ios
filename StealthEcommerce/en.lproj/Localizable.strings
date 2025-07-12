@@ -1,0 +1,36 @@
+/* Registration Screen */
+"registration.title" = "Create an account";
+"registration.username.label" = "Username";
+"registration.username.placeholder" = "Username";
+"registration.username.error.empty" = "Username cannot be empty";
+"registration.username.error.tooShort" = "Username must be at least 3 characters";
+
+"registration.email.label" = "Email";
+"registration.email.placeholder" = "Email address";
+"registration.email.error.empty" = "Email cannot be empty";
+"registration.email.error.invalid" = "Please enter a valid email address";
+"registration.email.error.duplicate" = "This email is already registered";
+
+"registration.password.label" = "Password";
+"registration.password.placeholder" = "Password";
+"registration.password.error.empty" = "Password cannot be empty";
+"registration.password.error.tooShort" = "Password must be at least 6 characters";
+
+"registration.confirmPassword.label" = "Confirm Password";
+"registration.confirmPassword.placeholder" = "Confirm Password";
+"registration.confirmPassword.error.empty" = "Please confirm your password";
+"registration.confirmPassword.error.mismatch" = "Passwords do not match";
+
+"registration.button.signup" = "Sign Up";
+"registration.button.login" = "Already have an account? Log in";
+"registration.error.general" = "Please correct the errors above";
+
+/* Login Screen */
+"login.title" = "Login";
+"login.username.label" = "Username";
+"login.username.placeholder" = "Username";
+"login.password.label" = "Password";
+"login.password.placeholder" = "Password";
+"login.button.login" = "Login";
+"login.button.signup" = "Don't have an account? Sign up";
+"login.error.invalidCredentials" = "Invalid username or password"; 

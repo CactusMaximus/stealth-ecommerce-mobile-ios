@@ -10,6 +10,7 @@ import Foundation
 class UserViewModel: ObservableObject {
     
     @Published var message: String?
+    @Published var errorDetails: String?
     
     private var networkService: NetworkService?
     
@@ -30,15 +31,19 @@ class UserViewModel: ObservableObject {
                case .failure(let error):
                 DispatchQueue.main.async(execute: {
                     self.message = "Failure"
+                    self.errorDetails = error.localizedDescription
                 })
-                debugPrint("Registered error:", error.localizedDescription)
+                debugPrint("Registered error:", error)
                }
         }
     }
     
     //POST User - Login user
     func loginUser(user: User) {
-        networkService?.request(url: "http://localhost:3000/api/users/login", method: .post, body: user) { (result: Result<UserResponse, Error>) in
+        // Create a login request with just email and password
+        let loginRequest = LoginRequest(email: user.email, password: user.password)
+        
+        networkService?.request(url: "http://localhost:3000/api/users/login", method: .post, body: loginRequest) { (result: Result<UserResponse, Error>) in
             
             switch result {
                case .success(let user):
@@ -49,8 +54,9 @@ class UserViewModel: ObservableObject {
                case .failure(let error):
                 DispatchQueue.main.async(execute: {
                     self.message = "Failure"
+                    self.errorDetails = error.localizedDescription
                 })
-                debugPrint("Login error:", error.localizedDescription)
+                debugPrint("Login error:", error)
                }
         }
     }

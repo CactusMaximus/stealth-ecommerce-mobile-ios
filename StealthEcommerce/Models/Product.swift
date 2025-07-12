@@ -10,6 +10,14 @@ struct Product: Codable, Identifiable {
     var id: String
     let name: String
     let description: String
-    let price: String
+    let price: Double
     let category: String
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case description
+        case price
+        case category
+    }
 }

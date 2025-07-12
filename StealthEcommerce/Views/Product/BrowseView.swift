@@ -8,31 +8,50 @@
 import SwiftUI
 
 struct BrowseView: View {
-    @State private var products = [
-        Product(id: "1", name: "test", description: "test", price: "test", category: "test"),
-        Product(id: "2", name: "test2", description: "test", price: "test", category: "test"),
-        Product(id: "3", name: "test3", description: "test", price: "test", category: "test"),
-        Product(id: "4", name: "test4", description: "test", price: "test", category: "test"),
-        Product(id: "5", name: "test5", description: "test", price: "test", category: "test"),
-        Product(id: "6", name: "test6", description: "test", price: "test", category: "test"),
-        Product(id: "7", name: "test7", description: "test", price: "test", category: "test")
-    ]
+    @State private var products: [Product] = []
+    @State private var isLoading = false
+    @State private var errorMessage: String? = nil
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(products) { product in
-                    VStack (alignment: .leading, spacing: 20) {
-                        HStack(alignment: .center, spacing: 0) {
-                            Image("avo").resizable().scaledToFit().frame(width: 100).padding()
-                            
-                            Text("\(product.name)")
-                            Spacer()
-                            NavigationLink(destination: ProductDetailView(product: product)) {
+            VStack {
+                if isLoading {
+                    ProgressView("Loading products...")
+                } else if let errorMessage = errorMessage {
+                    Text(errorMessage).foregroundColor(.red)
+                } else {
+                    List {
+                        ForEach(products) { product in
+                            VStack (alignment: .leading, spacing: 20) {
+                                HStack(alignment: .center, spacing: 0) {
+                                    Image("avo").resizable().scaledToFit().frame(width: 100).padding()
+                                    Text("\(product.name)")
+                                    Spacer()
+                                    NavigationLink(destination: ProductDetailView(product: product)) {
+                                    }
+                                }
                             }
                         }
-                        
-                    }}
+                    }
+                }
+            }
+            .onAppear(perform: fetchProducts)
+        }
+    }
+    
+    private func fetchProducts() {
+        isLoading = true
+        errorMessage = nil
+        let url = "http://localhost:3000/api/products" // Change to your server IP if needed
+        NetworkService.shared.request(url: url, method: .get, body: Optional<Product>.none, headers: [:]) { (result: Result<[Product], Error>) in
+            DispatchQueue.main.async {
+                isLoading = false
+                switch result {
+                case .success(let products):
+                    self.products = products
+                case .failure(let error):
+                    self.errorMessage = "Failed to load products: \(error.localizedDescription)"
+                }
             }
         }
     }

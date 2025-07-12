@@ -14,6 +14,7 @@ struct LoginView: View {
     @EnvironmentObject private var localizationManager: LocalizationManager
     
     @State private var username: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State private var showPassword: Bool = false
     @State private var loginMessage: String?
@@ -21,8 +22,8 @@ struct LoginView: View {
     @State private var goToRegistration: Bool = false
     
     // Validation states
-    @State private var usernameError: String = ""
     @State private var passwordError: String = ""
+    @State private var emailError: String = ""
     @State private var isValidating: Bool = false
     @State private var refreshToggle: Bool = false
     
@@ -45,24 +46,23 @@ struct LoginView: View {
                         .padding(.top)
                         .frame(maxWidth: .infinity, alignment: .center)
                 
-                    Text("login.username.label".localized)
+                    Text("login.email.label".localized)
                         .font(.subheadline)
                         .bold()
                         .padding(.top)
-                
-                    // Username Field
-                    TextField.localized("login.username.placeholder", text: $username)
+                    // Email Field
+                    TextField.localized("login.email.placeholder", text: $email)
                         .padding()
                         .background(Color(UIColor.secondarySystemBackground))
                         .cornerRadius(14)
                         .autocapitalization(.none)
-                        .onChange(of: username) { _ in
+                        .keyboardType(.emailAddress)
+                        .onChange(of: email) { _ in
                             if isValidating {
-                                validateUsername()
+                                validateEmail()
                             }
                         }
-                    
-                    ValidationMessageView(message: usernameError)
+                    ValidationMessageView(message: emailError)
                     
                     // Password Field
                     Text("login.password.label".localized)
@@ -144,12 +144,20 @@ struct LoginView: View {
     }
     
     func validateUsername() -> Bool {
-        if username.isEmpty {
-            usernameError = "Username cannot be empty"
+        return true // No longer used
+    }
+    func validateEmail() -> Bool {
+        if email.isEmpty {
+            emailError = "Email cannot be empty"
             return false
         }
-        
-        usernameError = ""
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        if !emailPredicate.evaluate(with: email) {
+            emailError = "Invalid email address"
+            return false
+        }
+        emailError = ""
         return true
     }
     
@@ -167,14 +175,12 @@ struct LoginView: View {
         isValidating = true
         loginMessage = nil
         
-        let isUsernameValid = validateUsername()
+        let isEmailValid = validateEmail()
         let isPasswordValid = validatePassword()
-        
-        if !isUsernameValid || !isPasswordValid {
+        if !isEmailValid || !isPasswordValid {
             return
         }
-        
-        viewModel.loginUser(user: User(email: username, password: password, firstName: username, lastName: username, address: Address(street: "test", city: "test", state: "test", zipCode: "test")))
+        viewModel.loginUser(user: User(email: email, password: password, firstName: email, lastName: email, address: Address(street: "test", city: "test", state: "test", zipCode: "test")))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if let message = viewModel.message {

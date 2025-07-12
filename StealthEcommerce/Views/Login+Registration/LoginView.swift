@@ -11,6 +11,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject private var viewModel = UserViewModel()
+    @EnvironmentObject private var localizationManager: LocalizationManager
     
     @State private var username: String = ""
     @State private var password: String = ""
@@ -23,97 +24,123 @@ struct LoginView: View {
     @State private var usernameError: String = ""
     @State private var passwordError: String = ""
     @State private var isValidating: Bool = false
+    @State private var refreshToggle: Bool = false
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(spacing: 0) {
+                // Language selector at the very top right
+                HStack {
+                    Spacer()
+                    RegionSelectorView()
+                }
+                .padding(.top, 8)
+                .padding(.trailing, 16)
                 
-                Text("Username")
-                    .font(.subheadline)
-                    .bold()
-                    .padding(.top)
+                VStack(alignment: .leading, spacing: 20) {
+                    // Title below the selector
+                    Text("login.title".localized)
+                        .font(.title)
+                        .fontWeight(.medium)
+                        .padding(.top)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 
-                // Username Field
-                TextField("Username", text: $username)
-                    .padding()
+                    Text("login.username.label".localized)
+                        .font(.subheadline)
+                        .bold()
+                        .padding(.top)
+                
+                    // Username Field
+                    TextField.localized("login.username.placeholder", text: $username)
+                        .padding()
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(14)
+                        .autocapitalization(.none)
+                        .onChange(of: username) { _ in
+                            if isValidating {
+                                validateUsername()
+                            }
+                        }
+                    
+                    ValidationMessageView(message: usernameError)
+                    
+                    // Password Field
+                    Text("login.password.label".localized)
+                        .font(.subheadline)
+                        .bold()
+                        .padding(.top)
+                    
+                    HStack {
+                        Group {
+                            if showPassword {
+                                TextField.localized("login.password.placeholder", text: $password)
+                            } else {
+                                SecureField.localized("login.password.placeholder", text: $password)
+                            }
+                        }
+                        .padding()
+                        .autocapitalization(.none)
+                        .onChange(of: password) { _ in
+                            if isValidating {
+                                validatePassword()
+                            }
+                        }
+                        
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(systemName: showPassword ? "eye.slash" : "eye")
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.trailing, 10)
+                    }
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(14)
-                    .autocapitalization(.none)
-                    .onChange(of: username) { _ in
-                        if isValidating {
-                            validateUsername()
-                        }
+                    
+                    ValidationMessageView(message: passwordError)
+                    
+                    if let message = loginMessage {
+                        Text(message)
+                            .foregroundColor(.red)
+                            .padding(.top)
                     }
-                
-                ValidationMessageView(message: usernameError)
-                
-                // Password Field
-                Text("Password")
-                    .font(.subheadline)
-                    .bold()
-                    .padding(.top)
-                
-                HStack {
-                    Group {
-                        if showPassword {
-                            TextField("Password", text: $password)
-                        } else {
-                            SecureField("Password", text: $password)
-                        }
-                    }
-                    .padding()
-                    .autocapitalization(.none)
-                    .onChange(of: password) { _ in
-                        if isValidating {
-                            validatePassword()
-                        }
+                    
+                    Button(action: handleLogin) {
+                        Text("login.button.login".localized)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.yellow)
+                            .foregroundColor(.black)
+                            .cornerRadius(50)
                     }
                     
                     Button(action: {
-                        showPassword.toggle()
+                        goToRegistration = true
                     }) {
-                        Image(systemName: showPassword ? "eye.slash" : "eye")
-                            .foregroundColor(.gray)
+                        Text("login.button.signup".localized)
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    .padding(.trailing, 10)
-                }
-                .background(Color(UIColor.secondarySystemBackground))
-                .cornerRadius(14)
-                
-                ValidationMessageView(message: passwordError)
-                
-                if let message = loginMessage {
-                    Text(message)
-                        .foregroundColor(.red)
-                        .padding(.top)
+                    .padding(.top, 20)
+                    
+                    Spacer()
                 }
                 
-                Button(action: handleLogin) {
-                    Text("Login")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.yellow)
-                        .foregroundColor(.black)
-                        .cornerRadius(50)
+                .padding()
+                .navigationDestination(isPresented: $goToHome) {
+                    CategpriesView()
                 }
-                
-                Button(action: {
-                    goToRegistration = true
-                }) {
-                    Text("Don't have an account? Sign up")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                .navigationDestination(isPresented: $goToRegistration) {
+                    RegistrationView()
                 }
-                .padding(.top, 20)
-                
-                Spacer()
             }
-            
-            .padding()
-            .navigationDestination(isPresented: $goToHome) {CategpriesView()}
-            .navigationDestination(isPresented: $goToRegistration) {RegistrationView()}
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
+            // Force refresh by toggling state
+            refreshToggle.toggle()
+        }
+        .id(refreshToggle) // Force view recreation when this changes
     }
     
     func validateUsername() -> Bool {

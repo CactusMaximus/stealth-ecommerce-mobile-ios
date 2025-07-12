@@ -1,0 +1,36 @@
+/* Registration Screen */
+"registration.title" = "Crear una cuenta";
+"registration.username.label" = "Nombre de usuario";
+"registration.username.placeholder" = "Nombre de usuario";
+"registration.username.error.empty" = "El nombre de usuario no puede estar vacío";
+"registration.username.error.tooShort" = "El nombre de usuario debe tener al menos 3 caracteres";
+
+"registration.email.label" = "Correo electrónico";
+"registration.email.placeholder" = "Dirección de correo";
+"registration.email.error.empty" = "El correo electrónico no puede estar vacío";
+"registration.email.error.invalid" = "Por favor, introduce un correo electrónico válido";
+"registration.email.error.duplicate" = "Este correo electrónico ya está registrado";
+
+"registration.password.label" = "Contraseña";
+"registration.password.placeholder" = "Contraseña";
+"registration.password.error.empty" = "La contraseña no puede estar vacía";
+"registration.password.error.tooShort" = "La contraseña debe tener al menos 6 caracteres";
+
+"registration.confirmPassword.label" = "Confirmar contraseña";
+"registration.confirmPassword.placeholder" = "Confirmar contraseña";
+"registration.confirmPassword.error.empty" = "Por favor, confirma tu contraseña";
+"registration.confirmPassword.error.mismatch" = "Las contraseñas no coinciden";
+
+"registration.button.signup" = "Registrarse";
+"registration.button.login" = "¿Ya tienes una cuenta? Inicia sesión";
+"registration.error.general" = "Por favor, corrige los errores anteriores";
+
+/* Login Screen */
+"login.title" = "Iniciar sesión";
+"login.username.label" = "Nombre de usuario";
+"login.username.placeholder" = "Nombre de usuario";
+"login.password.label" = "Contraseña";
+"login.password.placeholder" = "Contraseña";
+"login.button.login" = "Iniciar sesión";
+"login.button.signup" = "¿No tienes una cuenta? Regístrate";
+"login.error.invalidCredentials" = "Nombre de usuario o contraseña inválidos"; 

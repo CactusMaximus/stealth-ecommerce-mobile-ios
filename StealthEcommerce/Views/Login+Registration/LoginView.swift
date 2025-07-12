@@ -17,6 +17,12 @@ struct LoginView: View {
     @State private var showPassword: Bool = false
     @State private var loginMessage: String?
     @State private var goToHome: Bool = false
+    @State private var goToRegistration: Bool = false
+    
+    // Validation states
+    @State private var usernameError: String = ""
+    @State private var passwordError: String = ""
+    @State private var isValidating: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -33,6 +39,13 @@ struct LoginView: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(14)
                     .autocapitalization(.none)
+                    .onChange(of: username) { _ in
+                        if isValidating {
+                            validateUsername()
+                        }
+                    }
+                
+                ValidationMessageView(message: usernameError)
                 
                 // Password Field
                 Text("Password")
@@ -50,6 +63,11 @@ struct LoginView: View {
                     }
                     .padding()
                     .autocapitalization(.none)
+                    .onChange(of: password) { _ in
+                        if isValidating {
+                            validatePassword()
+                        }
+                    }
                     
                     Button(action: {
                         showPassword.toggle()
@@ -61,6 +79,8 @@ struct LoginView: View {
                 }
                 .background(Color(UIColor.secondarySystemBackground))
                 .cornerRadius(14)
+                
+                ValidationMessageView(message: passwordError)
                 
                 if let message = loginMessage {
                     Text(message)
@@ -77,32 +97,71 @@ struct LoginView: View {
                         .cornerRadius(50)
                 }
                 
+                Button(action: {
+                    goToRegistration = true
+                }) {
+                    Text("Don't have an account? Sign up")
+                        .font(.subheadline)
+                        .foregroundColor(.blue)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .padding(.top, 20)
+                
                 Spacer()
             }
             
             .padding()
             .navigationDestination(isPresented: $goToHome) {CategpriesView()}
+            .navigationDestination(isPresented: $goToRegistration) {RegistrationView()}
         }
     }
     
+    func validateUsername() -> Bool {
+        if username.isEmpty {
+            usernameError = "Username cannot be empty"
+            return false
+        }
+        
+        usernameError = ""
+        return true
+    }
+    
+    func validatePassword() -> Bool {
+        if password.isEmpty {
+            passwordError = "Password cannot be empty"
+            return false
+        }
+        
+        passwordError = ""
+        return true
+    }
+    
     func handleLogin() {
-        if username.isEmpty || password.isEmpty {
-            loginMessage = "Please enter both username and password."
-        } else {
-            
-            viewModel.loginUser(user: User(email: username, password: password, firstName: username, lastName: username, address: Address(street: "test", city: "test", state: "test", zipCode: "test")))
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if let message = viewModel.message {
-                    debugPrint(message)
-                    if message.contains("Success") {
-                        goToHome = true
+        isValidating = true
+        loginMessage = nil
+        
+        let isUsernameValid = validateUsername()
+        let isPasswordValid = validatePassword()
+        
+        if !isUsernameValid || !isPasswordValid {
+            return
+        }
+        
+        viewModel.loginUser(user: User(email: username, password: password, firstName: username, lastName: username, address: Address(street: "test", city: "test", state: "test", zipCode: "test")))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if let message = viewModel.message {
+                debugPrint(message)
+                if message.contains("Success") {
+                    goToHome = true
+                } else {
+                    if let errorDetails = viewModel.errorDetails {
+                        loginMessage = "Login failed: \(errorDetails)"
                     } else {
-                        loginMessage = "Invalid details"
+                        loginMessage = "Invalid username or password"
                     }
                 }
             }
-            
         }
     }
 }

@@ -34,3 +34,6 @@
 "login.button.login" = "Sign In";
 "login.button.signup" = "New user? Create account";
 "login.error.invalidCredentials" = "Incorrect username or password"; 
+
+"login.email.label" = "Email";
+"login.email.placeholder" = "Email address"; 

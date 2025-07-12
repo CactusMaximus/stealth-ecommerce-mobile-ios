@@ -34,3 +34,6 @@
 "login.button.login" = "Iniciar sesión";
 "login.button.signup" = "¿No tienes una cuenta? Regístrate";
 "login.error.invalidCredentials" = "Nombre de usuario o contraseña inválidos"; 
+
+"login.email.label" = "Correo electrónico";
+"login.email.placeholder" = "Dirección de correo"; 

@@ -10,6 +10,7 @@ import SwiftUI
 struct CategpriesView: View {
     @State private var search: String = ""
     @State private var showCart: Bool = false
+    @EnvironmentObject private var cartViewModel: CartViewModel
     
     var body: some View {
         NavigationStack {
@@ -67,10 +68,21 @@ struct CategpriesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        print("tap")
-                      showCart = true
+                        showCart = true
                     }) {
-                        Image(systemName: "cart")
+                        ZStack(alignment: .topTrailing) {
+                            Image(systemName: "cart")
+                            
+                            if !cartViewModel.items.isEmpty {
+                                Text("\(cartViewModel.items.count)")
+                                    .font(.caption2)
+                                    .padding(5)
+                                    .foregroundColor(.white)
+                                    .background(Color.red)
+                                    .clipShape(Circle())
+                                    .offset(x: 10, y: -10)
+                            }
+                        }
                     }
                 }
             }
@@ -81,4 +93,5 @@ struct CategpriesView: View {
 
 #Preview {
     CategpriesView()
+        .environmentObject(CartViewModel())
 }

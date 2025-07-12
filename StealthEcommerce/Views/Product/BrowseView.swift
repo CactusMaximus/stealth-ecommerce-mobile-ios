@@ -25,7 +25,13 @@ struct BrowseView: View {
                             VStack (alignment: .leading, spacing: 20) {
                                 HStack(alignment: .center, spacing: 0) {
                                     Image("avo").resizable().scaledToFit().frame(width: 100).padding()
-                                    Text("\(product.name)")
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("\(product.name)")
+                                            .font(.headline)
+                                        Text("$\(String(format: "%.2f", product.price))")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
                                     Spacer()
                                     NavigationLink(destination: ProductDetailView(product: product)) {
                                     }

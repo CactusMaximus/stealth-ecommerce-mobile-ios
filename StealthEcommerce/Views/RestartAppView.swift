@@ -20,15 +20,15 @@ struct RestartAppView: View {
                 .foregroundColor(.blue)
                 .padding(.top, 40)
             
-            Text("Language Changed")
+            Text("restart.title".localized)
                 .font(.title)
                 .bold()
             
-            Text("You've changed your language to \(languageName).")
+            Text("restart.message".localized(with: languageName))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            Text("For the best experience, please restart the app.")
+            Text("restart.recommendation".localized)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
@@ -39,7 +39,7 @@ struct RestartAppView: View {
                 // Exit the app
                 exit(0)
             }) {
-                Text("Restart Now")
+                Text("restart.button.now".localized)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.blue)
@@ -53,7 +53,7 @@ struct RestartAppView: View {
                 // Just close this view
                 isPresented = false
             }) {
-                Text("Later")
+                Text("restart.button.later".localized)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color(UIColor.secondarySystemBackground))

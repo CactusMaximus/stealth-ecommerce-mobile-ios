@@ -11,20 +11,23 @@ struct ProfileView: View {
     // Hardcoded user ID for demo purposes - in a real app, this would come from user authentication
     let userId = "65f5a1d2e1b7c2a3d4f5e6a7" // Use a real ID from your database that exists in MongoDB
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @State private var showingLogoutAlert = false
     @State private var isLoading = false
     @State private var showError = false
+    @State private var showLanguageSelector = false
+    @ObservedObject private var regionManager = RegionManager.shared
     
     var body: some View {
         NavigationView {
             ZStack {
                 List {
-                    Section(header: Text("ACCOUNT")) {
+                    Section(header: Text("profile.section.account".localized)) {
                         NavigationLink(destination: ProfileDetailsView()) {
                             HStack {
                                 Image(systemName: "person.circle")
                                     .foregroundColor(.yellow)
-                                Text("Account Settings")
+                                Text("profile.account.settings".localized)
                             }
                         }
                         
@@ -32,17 +35,17 @@ struct ProfileView: View {
                             HStack {
                                 Image(systemName: "creditcard")
                                     .foregroundColor(.yellow)
-                                Text("Payment Methods")
+                                Text("profile.payment.methods".localized)
                             }
                         }
                     }
                     
-                    Section(header: Text("ORDERS")) {
+                    Section(header: Text("profile.section.orders".localized)) {
                         NavigationLink(destination: OrderHistoryView(userId: userId)) {
                             HStack {
                                 Image(systemName: "bag")
                                     .foregroundColor(.yellow)
-                                Text("Order History")
+                                Text("profile.order.history".localized)
                             }
                         }
                         
@@ -50,17 +53,32 @@ struct ProfileView: View {
                             HStack {
                                 Image(systemName: "heart")
                                     .foregroundColor(.yellow)
-                                Text("Saved Items")
+                                Text("profile.saved.items".localized)
                             }
                         }
                     }
                     
-                    Section(header: Text("SUPPORT")) {
+                    Section(header: Text("profile.section.preferences".localized)) {
+                        Button(action: {
+                            showLanguageSelector = true
+                        }) {
+                            HStack {
+                                Image(systemName: "globe")
+                                    .foregroundColor(.yellow)
+                                Text("profile.language".localized)
+                                Spacer()
+                                Text(regionManager.currentRegion.flag + " " + regionManager.currentRegion.displayName)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                    
+                    Section(header: Text("profile.section.support".localized)) {
                         NavigationLink(destination: Text("Help Center")) {
                             HStack {
                                 Image(systemName: "questionmark.circle")
                                     .foregroundColor(.yellow)
-                                Text("Help Center")
+                                Text("profile.help.center".localized)
                             }
                         }
                         
@@ -68,7 +86,7 @@ struct ProfileView: View {
                             HStack {
                                 Image(systemName: "envelope")
                                     .foregroundColor(.yellow)
-                                Text("Contact Us")
+                                Text("profile.contact.us".localized)
                             }
                         }
                     }
@@ -78,39 +96,77 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("Logout")
+                            Text("profile.logout".localized)
                                 .foregroundColor(.red)
                             Spacer()
                         }
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-                .navigationTitle("Profile")
-                .alert("Logout", isPresented: $showingLogoutAlert) {
-                    Button("Cancel", role: .cancel) { }
-                    Button("Logout", role: .destructive) {
+                .navigationTitle("profile.title".localized)
+                .alert("profile.logout".localized, isPresented: $showingLogoutAlert) {
+                    Button("common.cancel".localized, role: .cancel) { }
+                    Button("profile.logout".localized, role: .destructive) {
                         logout()
                     }
                 } message: {
-                    Text("Are you sure you want to logout?")
+                    Text("profile.logout.confirmation".localized)
                 }
-                .alert("Error", isPresented: $showError) {
-                    Button("OK", role: .cancel) { }
+                .alert("common.error".localized, isPresented: $showError) {
+                    Button("common.ok".localized, role: .cancel) { }
                 } message: {
-                    Text(userViewModel.errorDetails ?? "Failed to load user data")
+                    Text(userViewModel.errorDetails ?? "profile.error.loading".localized)
                 }
                 
                 if isLoading {
-                    ProgressView("Loading profile...")
+                    ProgressView("profile.loading".localized)
                         .padding()
                         .background(Color.white.opacity(0.8))
                         .cornerRadius(10)
                         .shadow(radius: 10)
                 }
             }
+            .sheet(isPresented: $showLanguageSelector) {
+                languageSelectorView
+            }
         }
         .onAppear {
             fetchUserData()
+        }
+    }
+    
+    private var languageSelectorView: some View {
+        NavigationView {
+            List {
+                ForEach(USRegion.allCases) { region in
+                    Button(action: {
+                        regionManager.setRegion(region)
+                        showLanguageSelector = false
+                    }) {
+                        HStack {
+                            LanguageFlagView(
+                                region: region,
+                                isSelected: regionManager.currentRegion == region
+                            )
+                            Spacer()
+                            if regionManager.currentRegion == region {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            .navigationTitle("profile.language.selection".localized)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("common.done".localized) {
+                        showLanguageSelector = false
+                    }
+                }
+            }
         }
     }
     
@@ -183,4 +239,5 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
         .environmentObject(UserViewModel())
+        .environmentObject(LocalizationManager.shared)
 }

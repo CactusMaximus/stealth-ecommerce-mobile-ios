@@ -32,6 +32,8 @@ struct StealthEcommerceApp: App {
 struct ContentView: View {
     @State private var selectedTab = 0
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
+    @State private var refreshToggle: Bool = false
     
     var body: some View {
         if userViewModel.currentUser == nil {
@@ -42,21 +44,21 @@ struct ContentView: View {
                 // Home tab
                 CategpriesView()
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("tab.home".localized, systemImage: "house")
                     }
                     .tag(0)
                 
                 // Browse tab
                 BrowseView()
                     .tabItem {
-                        Label("Browse", systemImage: "magnifyingglass")
+                        Label("tab.browse".localized, systemImage: "magnifyingglass")
                     }
                     .tag(1)
                 
                 // Shop tab (with cart icon)
                 CartView()
                     .tabItem {
-                        Label("Cart", systemImage: "cart")
+                        Label("tab.cart".localized, systemImage: "cart")
                     }
                     .tag(2)
                 
@@ -64,7 +66,7 @@ struct ContentView: View {
                 if userViewModel.isAdmin {
                     ProductManagementView()
                         .tabItem {
-                            Label("Manage", systemImage: "square.and.pencil")
+                            Label("tab.manage".localized, systemImage: "square.and.pencil")
                         }
                         .tag(3)
                 }
@@ -72,10 +74,15 @@ struct ContentView: View {
                 // Profile tab
                 ProfileView()
                     .tabItem {
-                        Label("Profile", systemImage: "person")
+                        Label("tab.profile".localized, systemImage: "person")
                     }
                     .tag(4)
             }
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
+                // Force refresh by toggling state
+                refreshToggle.toggle()
+            }
+            .id(refreshToggle) // Force view recreation when language changes
         }
     }
 }

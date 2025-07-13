@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject private var cartViewModel: CartViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @Environment(\.presentationMode) var presentationMode
     @State private var showingShippingAddressView = false
     @State private var proceedToConfirmation = false
@@ -21,11 +22,11 @@ struct CartView: View {
             if cartViewModel.items.isEmpty {
                 VStack(spacing: 20) {
                     Spacer()
-                    Text("Your cart is empty")
+                    Text("cart.empty".localized)
                         .font(.title)
                         .foregroundColor(.gray)
                     
-                    Button("Continue Shopping") {
+                    Button("cart.continue_shopping".localized) {
                         presentationMode.wrappedValue.dismiss()
                     }
                     .padding()
@@ -45,20 +46,20 @@ struct CartView: View {
                 .listStyle(PlainListStyle())
                 
                 VStack(spacing: 10) {
-                    Text("Summary").font(.title2).bold()
+                    Text("cart.summary".localized).font(.title2).bold()
                     HStack {
-                        Text("Subtotal").foregroundStyle(.gray)
+                        Text("cart.subtotal".localized).foregroundStyle(.gray)
                         Spacer()
                         Text("$\(String(format: "%.2f", cartViewModel.subtotal))")
                     }
                     HStack {
-                        Text("Shipping").foregroundStyle(.gray)
+                        Text("cart.shipping".localized).foregroundStyle(.gray)
                         Spacer()
                         Text("$\(String(format: "%.2f", cartViewModel.shippingCost))")
                     }
                     
                     HStack {
-                        Text("Total").foregroundStyle(.gray)
+                        Text("cart.total".localized).foregroundStyle(.gray)
                         Spacer()
                         Text("$\(String(format: "%.2f", cartViewModel.total))")
                             .font(.headline)
@@ -69,7 +70,7 @@ struct CartView: View {
                 Button(action: {
                     showingShippingAddressView = true
                 }) {
-                    Text("Proceed to Checkout")
+                    Text("cart.proceed_checkout".localized)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.yellow)
@@ -80,7 +81,7 @@ struct CartView: View {
             }
         }
         .padding(.bottom, 20)
-        .navigationTitle("Cart")
+        .navigationTitle("cart.title".localized)
         .sheet(isPresented: $showingShippingAddressView) {
             ShippingAddressView {
                 proceedToConfirmation = true
@@ -104,9 +105,9 @@ struct CartView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.product.name)
                     .font(.headline)
-                Text("Quantity: \(item.quantity)")
+                Text("cart.quantity".localized(with: item.quantity))
                     .foregroundStyle(.gray)
-                Text("$\(String(format: "%.2f", item.product.price)) each")
+                Text("cart.price_each".localized(with: String(format: "%.2f", item.product.price)))
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
@@ -122,6 +123,7 @@ struct CartView: View {
     NavigationView {
         CartView()
             .environmentObject(CartViewModel())
+            .environmentObject(LocalizationManager.shared)
     }
 }
 

@@ -9,21 +9,23 @@ import SwiftUI
 
 struct OrderHistoryView: View {
     @StateObject private var orderViewModel = OrderViewModel()
+    @EnvironmentObject private var localizationManager: LocalizationManager
+    @State private var refreshToggle: Bool = false
     let userId: String
     
     var body: some View {
         VStack {
             if orderViewModel.isLoading {
-                ProgressView("Loading orders...")
+                ProgressView("order.history.loading".localized)
             } else if orderViewModel.orders.isEmpty {
                 VStack(spacing: 20) {
                     Image(systemName: "doc.text")
                         .font(.system(size: 70))
                         .foregroundColor(.gray)
-                    Text("No orders found")
+                    Text("order.history.empty".localized)
                         .font(.title)
                         .foregroundColor(.gray)
-                    Text("Your order history will appear here")
+                    Text("order.history.start_shopping".localized)
                         .foregroundColor(.secondary)
                 }
             } else {
@@ -31,7 +33,7 @@ struct OrderHistoryView: View {
                     ForEach(orderViewModel.orders) { order in
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
-                                Text("Order #\(order.id.suffix(6))")
+                                Text("order.history.order_number".localized(with: order.id.suffix(6)))
                                     .font(.headline)
                                 Spacer()
                                 Text(order.formattedDate)
@@ -40,16 +42,15 @@ struct OrderHistoryView: View {
                             }
                             
                             HStack {
-                                Text("\(order.items.count) item\(order.items.count == 1 ? "" : "s")")
+                                Text("cart.item_count".localized(with: order.items.count))
                                     .foregroundColor(.gray)
                                 Spacer()
-                                Text("$\(String(format: "%.2f", order.totalAmount))")
+                                Text("order.history.total".localized(with: order.totalAmount))
                                     .font(.headline)
                             }
                             
                             HStack {
-                                Text("Status:")
-                                Text(order.status.capitalized)
+                                Text("order.history.status".localized(with: getLocalizedStatus(for: order.status)))
                                     .foregroundColor(statusColor(for: order.status))
                                     .fontWeight(.medium)
                             }
@@ -63,12 +64,17 @@ struct OrderHistoryView: View {
                 }
             }
         }
-        .navigationTitle("Order History")
+        .navigationTitle("order.history.title".localized)
         .onAppear {
             // For demo purposes, load mock orders instead of real API calls
             orderViewModel.useMockData = true
             orderViewModel.loadMockOrders()
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
+            // Force refresh by toggling state
+            refreshToggle.toggle()
+        }
+        .id(refreshToggle) // Force view recreation when language changes
     }
     
     private func statusColor(for status: String) -> Color {
@@ -87,10 +93,28 @@ struct OrderHistoryView: View {
             return .gray
         }
     }
+    
+    private func getLocalizedStatus(for status: String) -> String {
+        switch status.lowercased() {
+        case "pending":
+            return "status.pending".localized
+        case "processing":
+            return "status.processing".localized
+        case "shipped":
+            return "status.shipped".localized
+        case "delivered":
+            return "status.delivered".localized
+        case "cancelled":
+            return "status.cancelled".localized
+        default:
+            return status.capitalized
+        }
+    }
 }
 
 #Preview {
     NavigationView {
         OrderHistoryView(userId: "user123")
+            .environmentObject(LocalizationManager.shared)
     }
 } 

@@ -14,6 +14,7 @@ struct BrowseView: View {
     @State private var errorMessage: String? = nil
     @State private var searchText = ""
     @State private var showAddProductView = false
+    @EnvironmentObject private var localizationManager: LocalizationManager
     
     var body: some View {
         NavigationStack {
@@ -22,7 +23,7 @@ struct BrowseView: View {
                 searchBar
                 
                 if isLoading {
-                    ProgressView("Loading products...")
+                    ProgressView("browse.loading".localized)
                 } else if let errorMessage = errorMessage {
                     Text(errorMessage).foregroundColor(.red)
                 } else if filteredProducts.isEmpty && !searchText.isEmpty {
@@ -30,9 +31,9 @@ struct BrowseView: View {
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 50))
                             .foregroundColor(.gray)
-                        Text("No products found matching '\(searchText)'")
+                        Text("browse.no_results".localized(with: searchText))
                             .foregroundColor(.gray)
-                        Button("Clear Search") {
+                        Button("browse.clear_search".localized) {
                             searchText = ""
                         }
                         .padding()
@@ -64,7 +65,7 @@ struct BrowseView: View {
                                         Text("$\(String(format: "%.2f", product.price))")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
-                                        Text("Stock: \(product.stock)")
+                                        Text("browse.stock".localized(with: product.stock))
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                     }
@@ -81,7 +82,7 @@ struct BrowseView: View {
                     }
                 }
             }
-            .navigationTitle("Browse Products")
+            .navigationTitle("browse.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -108,7 +109,7 @@ struct BrowseView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
             
-            TextField("Search products...", text: $searchText)
+            TextField("browse.search_placeholder".localized, text: $searchText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             if !searchText.isEmpty {
@@ -148,7 +149,7 @@ struct BrowseView: View {
                     self.products = products
                     self.filterProducts() // Apply any existing search filter
                 case .failure(let error):
-                    self.errorMessage = "Failed to load products: \(error.localizedDescription)"
+                    self.errorMessage = "browse.error.loading".localized(with: error.localizedDescription)
                 }
             }
         }
@@ -157,4 +158,5 @@ struct BrowseView: View {
 
 #Preview {
     BrowseView()
+        .environmentObject(LocalizationManager.shared)
 }

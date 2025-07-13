@@ -13,6 +13,7 @@ struct ProductManagementView: View {
     @State private var showDeleteConfirmation = false
     @State private var productToDelete: Product? = nil
     @State private var searchText = ""
+    @EnvironmentObject private var localizationManager: LocalizationManager
     
     var filteredProducts: [Product] {
         if searchText.isEmpty {
@@ -34,7 +35,7 @@ struct ProductManagementView: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
                     
-                    TextField("Search products...", text: $searchText)
+                    TextField("product_management.search".localized, text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     if !searchText.isEmpty {
@@ -50,7 +51,7 @@ struct ProductManagementView: View {
                 .padding(.top, 8)
                 
                 if viewModel.isLoading {
-                    ProgressView("Loading products...")
+                    ProgressView("product_management.loading".localized)
                 } else if let errorMessage = viewModel.errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
@@ -60,11 +61,11 @@ struct ProductManagementView: View {
                         Image(systemName: "tray")
                             .font(.system(size: 50))
                             .foregroundColor(.gray)
-                        Text(searchText.isEmpty ? "No products available" : "No products found matching '\(searchText)'")
+                        Text(searchText.isEmpty ? "product_management.no_products".localized : "product_management.no_results".localized(with: searchText))
                             .foregroundColor(.gray)
                         
                         if !searchText.isEmpty {
-                            Button("Clear Search") {
+                            Button("product_management.clear_search".localized) {
                                 searchText = ""
                             }
                             .padding()
@@ -111,7 +112,7 @@ struct ProductManagementView: View {
                                             .font(.subheadline)
                                             .foregroundColor(.blue)
                                         
-                                        Text("Stock: \(product.stock)")
+                                        Text("product_management.stock".localized(with: product.stock))
                                             .font(.caption)
                                             .foregroundColor(product.stock > 0 ? .green : .red)
                                     }
@@ -138,13 +139,13 @@ struct ProductManagementView: View {
                     }
                 }
             }
-            .navigationTitle("Product Management")
+            .navigationTitle("product_management.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showAddProductView = true
                     }) {
-                        Label("Add Product", systemImage: "plus")
+                        Label("product_management.add".localized, systemImage: "plus")
                     }
                 }
             }
@@ -153,15 +154,15 @@ struct ProductManagementView: View {
             }) {
                 AddProductView()
             }
-            .alert("Delete Product", isPresented: $showDeleteConfirmation) {
-                Button("Cancel", role: .cancel) { }
-                Button("Delete", role: .destructive) {
+            .alert("product_management.delete.title".localized, isPresented: $showDeleteConfirmation) {
+                Button("common.cancel".localized, role: .cancel) { }
+                Button("common.delete".localized, role: .destructive) {
                     if let product = productToDelete {
                         deleteProduct(product)
                     }
                 }
             } message: {
-                Text("Are you sure you want to delete this product? This action cannot be undone.")
+                Text("product_management.delete.confirmation".localized)
             }
             .onAppear {
                 viewModel.fetchProducts()
@@ -183,4 +184,5 @@ struct ProductManagementView: View {
 
 #Preview {
     ProductManagementView()
+        .environmentObject(LocalizationManager.shared)
 } 

@@ -46,7 +46,7 @@ struct StealthEcommerceApp: App {
                 .environmentObject(LocalizationManager.shared)
                 .onOpenURL { url in
                     // Handle Google Sign-In callback
-                    GoogleSignInManager.shared.handleSignInCallback(url: url)
+                    _ = GoogleSignInManager.shared.handleSignInCallback(url: url)
                 }
         }
     }

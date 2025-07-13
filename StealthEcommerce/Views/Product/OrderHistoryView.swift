@@ -33,7 +33,7 @@ struct OrderHistoryView: View {
                     ForEach(orderViewModel.orders) { order in
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
-                                Text("order.history.order_number".localized(with: order.id.suffix(6)))
+                                Text("order.history.order_number".localized(with: String(order.id.suffix(6))))
                                     .font(.headline)
                                 Spacer()
                                 Text(order.formattedDate)
@@ -60,7 +60,7 @@ struct OrderHistoryView: View {
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {
-                    orderViewModel.fetchOrderHistory(userId: userId, resetPage: true)
+                    orderViewModel.fetchOrderHistory(userId: userId)
                 }
             }
         }

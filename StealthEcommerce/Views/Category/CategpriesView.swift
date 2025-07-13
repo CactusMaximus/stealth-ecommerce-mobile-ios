@@ -10,9 +10,16 @@ import SwiftUI
 struct CategpriesView: View {
     @State private var search: String = ""
     @State private var showCart: Bool = false
+    @EnvironmentObject private var homeViewModel: HomeViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
     @State private var refreshToggle: Bool = false
+    
+    // Grid layout for categories
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
     
     var body: some View {
         NavigationStack {
@@ -20,35 +27,64 @@ struct CategpriesView: View {
                 VStack (alignment: .leading, spacing: 16) {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                        TextField("browse.search".localized, text: $search)
+                        TextField("home.search".localized, text: $search)
                             .padding()
                             .background(Color(UIColor.secondarySystemBackground))
                             .cornerRadius(15)
                     }
                     
-                    HeroView()
-                    
-                    Text("categories.title".localized).font(.title).bold().padding(.top, 10)
-                    VStack(alignment: .leading, spacing: 32) {
-                        HStack(spacing: 12) {
-                            NavigationLink(destination: BrowseView()) {
-                                CategoryView(title: "Tools")
+                    if homeViewModel.isLoading {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding()
+                    } else {
+                        // Hero section
+                        HeroView(heroCard: homeViewModel.heroCard)
+                            .onTapGesture {
+                                // Handle hero card tap if needed
                             }
-                            NavigationLink(destination: BrowseView()) {
-                                CategoryView(title: "Armor")
-                            }
-                        }
-                        HStack(spacing: 12) {
-                            NavigationLink(destination: BrowseView()) {
-                                CategoryView(title: "Resources")
-                            }
-                            NavigationLink(destination: BrowseView()) {
-                                CategoryView(title: "Food")
+                        
+                        // Categories section
+                        Text("home.categories".localized)
+                            .font(.title)
+                            .bold()
+                            .padding(.top, 10)
+                        
+                        if homeViewModel.categories.isEmpty {
+                            Text("home.no_categories".localized)
+                                .foregroundColor(.gray)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        } else {
+                            // Grid layout for categories
+                            LazyVGrid(columns: columns, spacing: 24) {
+                                ForEach(homeViewModel.categories) { category in
+                                    NavigationLink(destination: BrowseView(selectedCategory: category.id)) {
+                                        CategoryView(category: category)
+                                    }
+                                }
                             }
                         }
                     }
-                    Spacer()
                     
+                    if let error = homeViewModel.errorMessage {
+                        VStack {
+                            Text("home.error.loading".localized)
+                                .foregroundColor(.red)
+                                .padding()
+                            
+                            Button("home.retry".localized) {
+                                homeViewModel.fetchHomeData()
+                            }
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    
+                    Spacer()
                 }
                 .padding(.horizontal)
             }
@@ -78,12 +114,18 @@ struct CategpriesView: View {
                     .accessibilityLabel("tab.cart".localized)
                 }
             }
-            .navigationTitle("BlockMart")
+            .navigationTitle("home.title".localized)
             .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
                 // Force refresh by toggling state
                 refreshToggle.toggle()
             }
             .id(refreshToggle) // Force view recreation when language changes
+            .onAppear {
+                homeViewModel.fetchHomeData()
+            }
+            .refreshable {
+                homeViewModel.fetchHomeData()
+            }
         }
     }
 }
@@ -92,4 +134,5 @@ struct CategpriesView: View {
     CategpriesView()
         .environmentObject(CartViewModel())
         .environmentObject(LocalizationManager.shared)
+        .environmentObject(HomeViewModel())
 }

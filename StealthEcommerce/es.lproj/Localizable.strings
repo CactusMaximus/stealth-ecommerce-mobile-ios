@@ -55,6 +55,16 @@
 "tab.manage" = "Gestionar";
 "tab.profile" = "Perfil";
 
+/* Home Screen */
+"home.title" = "BlockMart";
+"home.search" = "Buscar productos";
+"home.featured" = "Artículos Destacados";
+"home.categories" = "Comprar por Categoría";
+"home.error.loading" = "Error al cargar datos";
+"home.retry" = "Reintentar";
+"home.no_categories" = "No se encontraron categorías";
+"home.no_featured" = "No hay artículos destacados disponibles";
+
 /* Categories View */
 "categories.title" = "Categorías";
 "categories.featured" = "Productos Destacados";

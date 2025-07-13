@@ -16,6 +16,9 @@ struct BrowseView: View {
     @State private var showAddProductView = false
     @EnvironmentObject private var localizationManager: LocalizationManager
     
+    // Category filter
+    var selectedCategory: String?
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -35,6 +38,33 @@ struct BrowseView: View {
                             .foregroundColor(.gray)
                         Button("browse.clear_search".localized) {
                             searchText = ""
+                        }
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    }
+                    .padding()
+                } else if filteredProducts.isEmpty {
+                    VStack(spacing: 20) {
+                        Image(systemName: "questionmark.circle")
+                            .font(.system(size: 50))
+                            .foregroundColor(.gray)
+                        Text(selectedCategory != nil ? 
+                             "No products found in the \(selectedCategory!.capitalized) category" : 
+                             "No products available")
+                            .foregroundColor(.gray)
+                        
+                        if !products.isEmpty {
+                            Text("Available categories: \(Array(Set(products.map { $0.category })).joined(separator: ", "))")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        }
+                        
+                        Button("Refresh") {
+                            fetchProducts()
                         }
                         .padding()
                         .background(Color.blue)
@@ -82,7 +112,7 @@ struct BrowseView: View {
                     }
                 }
             }
-            .navigationTitle("browse.title".localized)
+            .navigationTitle(selectedCategory != nil ? selectedCategory!.capitalized : "browse.title".localized)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -127,13 +157,40 @@ struct BrowseView: View {
     
     private func filterProducts() {
         if searchText.isEmpty {
-            filteredProducts = products
+            // If we have a selected category, filter by that
+            if let category = selectedCategory {
+                // Try to match by category ID first, then by name
+                filteredProducts = products.filter { product in
+                    // Case-insensitive comparison for both ID and name
+                    product.category.lowercased() == category.lowercased() ||
+                    product.category.lowercased().contains(category.lowercased())
+                }
+                
+                // If no products found, print debug info
+                if filteredProducts.isEmpty {
+                    print("No products found for category: \(category)")
+                    print("Available categories in products: \(products.map { $0.category }.joined(separator: ", "))")
+                }
+            } else {
+                filteredProducts = products
+            }
         } else {
-            filteredProducts = products.filter { product in
+            // Filter by search text AND category if applicable
+            var filtered = products.filter { product in
                 product.name.localizedCaseInsensitiveContains(searchText) ||
                 product.description.localizedCaseInsensitiveContains(searchText) ||
                 product.category.localizedCaseInsensitiveContains(searchText)
             }
+            
+            // If we have a selected category, further filter the results
+            if let category = selectedCategory {
+                filtered = filtered.filter { product in
+                    product.category.lowercased() == category.lowercased() ||
+                    product.category.lowercased().contains(category.lowercased())
+                }
+            }
+            
+            filteredProducts = filtered
         }
     }
     
@@ -141,14 +198,32 @@ struct BrowseView: View {
         isLoading = true
         errorMessage = nil
         let url = APIConstants.Endpoints.products
+        
+        print("🔍 Fetching products from: \(url)")
+        if let selectedCategory = selectedCategory {
+            print("🔍 Selected category: \(selectedCategory)")
+        }
+        
         NetworkService.shared.request(url: url, method: .get, body: Optional<Product>.none, headers: [:]) { (result: Result<[Product], Error>) in
             DispatchQueue.main.async {
-                isLoading = false
+                self.isLoading = false
                 switch result {
                 case .success(let products):
                     self.products = products
-                    self.filterProducts() // Apply any existing search filter
+                    print("✅ Fetched \(products.count) products")
+                    
+                    // Log all unique categories
+                    let uniqueCategories = Set(products.map { $0.category })
+                    print("📊 Available categories: \(uniqueCategories.joined(separator: ", "))")
+                    
+                    self.filterProducts() // Apply any existing search filter and category filter
+                    
+                    // Log filtered results
+                    if let selectedCategory = self.selectedCategory {
+                        print("🔍 After filtering for '\(selectedCategory)': \(self.filteredProducts.count) products")
+                    }
                 case .failure(let error):
+                    print("❌ Error fetching products: \(error.localizedDescription)")
                     self.errorMessage = "browse.error.loading".localized(with: error.localizedDescription)
                 }
             }

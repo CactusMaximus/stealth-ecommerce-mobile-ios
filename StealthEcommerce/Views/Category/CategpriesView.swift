@@ -10,6 +10,7 @@ import SwiftUI
 struct CategpriesView: View {
     @State private var search: String = ""
     @State private var showCart: Bool = false
+    @State private var showSearch: Bool = false
     @EnvironmentObject private var homeViewModel: HomeViewModel
     @EnvironmentObject private var cartViewModel: CartViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
@@ -25,12 +26,23 @@ struct CategpriesView: View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading, spacing: 16) {
+                    // Search bar with navigation
+                    NavigationLink(destination: BrowseView(searchQuery: search), isActive: $showSearch) {
+                        EmptyView()
+                    }
+                    
                     HStack {
                         Image(systemName: "magnifyingglass")
                         TextField("home.search".localized, text: $search)
                             .padding()
                             .background(Color(UIColor.secondarySystemBackground))
                             .cornerRadius(15)
+                            .onSubmit {
+                                if !search.isEmpty {
+                                    showSearch = true
+                                }
+                            }
+                            .submitLabel(.search)
                     }
                     
                     if homeViewModel.isLoading {

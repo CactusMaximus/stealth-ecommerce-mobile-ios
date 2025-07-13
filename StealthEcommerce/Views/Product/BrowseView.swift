@@ -12,12 +12,17 @@ struct BrowseView: View {
     @State private var filteredProducts: [Product] = []
     @State private var isLoading = false
     @State private var errorMessage: String? = nil
-    @State private var searchText = ""
+    @State private var searchText: String
     @State private var showAddProductView = false
     @EnvironmentObject private var localizationManager: LocalizationManager
     
-    // Category filter
+    // Category filter and search query
     var selectedCategory: String?
+    
+    init(selectedCategory: String? = nil, searchQuery: String = "") {
+        self.selectedCategory = selectedCategory
+        _searchText = State(initialValue: searchQuery)
+    }
     
     var body: some View {
         NavigationStack {

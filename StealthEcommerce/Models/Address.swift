@@ -9,8 +9,15 @@ import Foundation
 
 //Model for Address
 struct Address: Codable {
-    let street: String
-    let city: String
-    let state: String
-    let zipCode: String
+    var street: String
+    var city: String
+    var state: String
+    var zipCode: String
+    
+    init(street: String = "", city: String = "", state: String = "", zipCode: String = "") {
+        self.street = street
+        self.city = city
+        self.state = state
+        self.zipCode = zipCode
+    }
 }

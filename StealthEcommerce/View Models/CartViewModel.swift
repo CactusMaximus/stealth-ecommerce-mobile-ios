@@ -10,6 +10,7 @@ import SwiftUI
 
 class CartViewModel: ObservableObject {
     @Published var items: [CartItem] = []
+    @Published var shippingAddress = Address()
     
     // Computed properties for cart summary
     var subtotal: Double {
@@ -55,12 +56,13 @@ class CartViewModel: ObservableObject {
         items.removeAll()
     }
     
-    // Process checkout
-    func checkout() {
-        // Here you would typically call your backend API to process the order
-        print("Processing checkout for \(items.count) items, total: $\(String(format: "%.2f", total))")
-        
-        // For now, just clear the cart after checkout
-        clearCart()
+    // Process checkout - this will be called by OrderViewModel
+    func prepareForCheckout() -> [CartItem] {
+        return items
+    }
+    
+    // Update shipping address
+    func updateShippingAddress(street: String, city: String, state: String, zipCode: String) {
+        shippingAddress = Address(street: street, city: city, state: state, zipCode: zipCode)
     }
 } 

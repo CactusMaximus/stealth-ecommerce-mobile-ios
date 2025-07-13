@@ -13,6 +13,7 @@ struct BrowseView: View {
     @State private var isLoading = false
     @State private var errorMessage: String? = nil
     @State private var searchText = ""
+    @State private var showAddProductView = false
     
     var body: some View {
         NavigationStack {
@@ -45,13 +46,27 @@ struct BrowseView: View {
                         ForEach(filteredProducts) { product in
                             VStack (alignment: .leading, spacing: 20) {
                                 HStack(alignment: .center, spacing: 0) {
-                                    Image("avo").resizable().scaledToFit().frame(width: 100).padding()
+                                    AsyncImage(url: URL(string: product.imageUrl)) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            Image("avo").resizable().scaledToFit().frame(width: 100).padding()
+                                        case .success(let image):
+                                            image.resizable().scaledToFit().frame(width: 100).padding()
+                                        case .failure:
+                                            Image("avo").resizable().scaledToFit().frame(width: 100).padding()
+                                        @unknown default:
+                                            Image("avo").resizable().scaledToFit().frame(width: 100).padding()
+                                        }
+                                    }
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text("\(product.name)")
                                             .font(.headline)
                                         Text("$\(String(format: "%.2f", product.price))")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
+                                        Text("Stock: \(product.stock)")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
                                     }
                                     Spacer()
                                     NavigationLink(destination: ProductDetailView(product: product)) {
@@ -67,6 +82,20 @@ struct BrowseView: View {
                 }
             }
             .navigationTitle("Browse Products")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showAddProductView = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showAddProductView, onDismiss: {
+                fetchProducts()
+            }) {
+                AddProductView()
+            }
             .onAppear(perform: fetchProducts)
             .onChange(of: searchText) { _, newValue in
                 filterProducts()

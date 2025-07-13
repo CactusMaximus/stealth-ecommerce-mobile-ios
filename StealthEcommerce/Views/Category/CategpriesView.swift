@@ -14,53 +14,41 @@ struct CategpriesView: View {
     
     var body: some View {
         NavigationStack {
-            TabView {
-                ScrollView {
-                    VStack (alignment: .leading, spacing: 16) {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                            TextField("Search for items", text: $search)
-                                .padding()
-                                .background(Color(UIColor.secondarySystemBackground))
-                                .cornerRadius(15)
-                        }
-                        
-                        HeroView()
-                        
-                        Text("Categories").font(.title).bold().padding(.top, 10)
-                        VStack(alignment: .leading, spacing: 32) {
-                            HStack(spacing: 12) {
-                                NavigationLink(destination: BrowseView()) {
-                                    CategoryView(title: "Tools")
-                                }
-                                NavigationLink(destination: BrowseView()) {
-                                    CategoryView(title: "Armor")
-                                }
-                            }
-                            HStack(spacing: 12) {
-                                NavigationLink(destination: BrowseView()) {
-                                    CategoryView(title: "Resources")
-                                }
-                                NavigationLink(destination: BrowseView()) {
-                                    CategoryView(title: "Food")
-                                }
-                            }
-                        }
-                        Spacer()
-                        
+            ScrollView {
+                VStack (alignment: .leading, spacing: 16) {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Search for items", text: $search)
+                            .padding()
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(15)
                     }
-                    .padding(.horizontal)
-                }.tabItem {
-                    Label("Home", systemImage: "house")
+                    
+                    HeroView()
+                    
+                    Text("Categories").font(.title).bold().padding(.top, 10)
+                    VStack(alignment: .leading, spacing: 32) {
+                        HStack(spacing: 12) {
+                            NavigationLink(destination: BrowseView()) {
+                                CategoryView(title: "Tools")
+                            }
+                            NavigationLink(destination: BrowseView()) {
+                                CategoryView(title: "Armor")
+                            }
+                        }
+                        HStack(spacing: 12) {
+                            NavigationLink(destination: BrowseView()) {
+                                CategoryView(title: "Resources")
+                            }
+                            NavigationLink(destination: BrowseView()) {
+                                CategoryView(title: "Food")
+                            }
+                        }
+                    }
+                    Spacer()
+                    
                 }
-                
-                BrowseView().tabItem{
-                    Label("Browse", systemImage: "magnifyingglass")
-                }
-                
-                ProfileView().tabItem{
-                    Label("Profile", systemImage: "person")
-                }
+                .padding(.horizontal)
             }
             .navigationDestination(isPresented: $showCart) {
                 CartView()
@@ -86,8 +74,8 @@ struct CategpriesView: View {
                     }
                 }
             }
-        }.navigationTitle("BlockMart").foregroundStyle(.black)
-            
+            .navigationTitle("BlockMart")
+        }
     }
 }
 

@@ -15,7 +15,7 @@ struct User: Codable {
 }
 
 //Model for User Response
-struct UserResponse: Decodable {
+struct UserResponse: Codable {
     let email: String
     let firstName: String
     let lastName: String
@@ -24,4 +24,8 @@ struct UserResponse: Decodable {
     let createdAt: String
     let updatedAt: String
     let __v: Int
+    
+    var id: String {
+        return _id
+    }
 }

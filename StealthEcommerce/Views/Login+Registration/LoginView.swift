@@ -141,6 +141,17 @@ struct LoginView: View {
             refreshToggle.toggle()
         }
         .id(refreshToggle) // Force view recreation when this changes
+        .onChange(of: viewModel.message) { newValue in
+            if newValue == "Success" {
+                goToHome = true
+            } else if newValue == "Failure" {
+                if let errorDetails = viewModel.errorDetails {
+                    loginMessage = "Login failed: \(errorDetails)"
+                } else {
+                    loginMessage = "Invalid email or password"
+                }
+            }
+        }
     }
     
     func validateUsername() -> Bool {
@@ -180,22 +191,8 @@ struct LoginView: View {
         if !isEmailValid || !isPasswordValid {
             return
         }
-        viewModel.loginUser(user: User(email: email, password: password, firstName: email, lastName: email, address: Address(street: "test", city: "test", state: "test", zipCode: "test")))
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if let message = viewModel.message {
-                debugPrint(message)
-                if message.contains("Success") {
-                    goToHome = true
-                } else {
-                    if let errorDetails = viewModel.errorDetails {
-                        loginMessage = "Login failed: \(errorDetails)"
-                    } else {
-                        loginMessage = "Invalid username or password"
-                    }
-                }
-            }
-        }
+        viewModel.loginUser(email: email, password: password)
     }
 }
 

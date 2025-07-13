@@ -11,8 +11,9 @@ class UserViewModel: ObservableObject {
     
     @Published var message: String?
     @Published var errorDetails: String?
+    @Published var currentUser: UserResponse?
     
-    private var networkService: NetworkService?
+    private var networkService: NetworkService
     
     init(networkService: NetworkService = NetworkService.shared) {
         self.networkService = networkService
@@ -20,43 +21,45 @@ class UserViewModel: ObservableObject {
     
     //POST User - Create a user
     func createUser(user: User) {
-        networkService?.request(url: "http://localhost:3000/api/users", method: .post, body: user) { (result: Result<UserResponse, Error>) in
+        networkService.request(url: APIConstants.Endpoints.users, method: .post, body: user) { [weak self] (result: Result<UserResponse, Error>) in
             
             switch result {
                case .success(let user):
-                DispatchQueue.main.async(execute: {
-                    self.message = "Success"
-                })
-                debugPrint("Registered user:", user)
+                DispatchQueue.main.async {
+                    self?.message = "Success"
+                    self?.currentUser = user
+                }
+                print("✅ Registered user:", user)
                case .failure(let error):
-                DispatchQueue.main.async(execute: {
-                    self.message = "Failure"
-                    self.errorDetails = error.localizedDescription
-                })
-                debugPrint("Registered error:", error)
+                DispatchQueue.main.async {
+                    self?.message = "Failure"
+                    self?.errorDetails = error.localizedDescription
+                }
+                print("❌ Registration error:", error)
                }
         }
     }
     
     //POST User - Login user
-    func loginUser(user: User) {
+    func loginUser(email: String, password: String) {
         // Create a login request with just email and password
-        let loginRequest = LoginRequest(email: user.email, password: user.password)
+        let loginRequest = LoginRequest(email: email, password: password)
         
-        networkService?.request(url: "http://localhost:3000/api/users/login", method: .post, body: loginRequest) { (result: Result<UserResponse, Error>) in
+        networkService.request(url: APIConstants.Endpoints.login, method: .post, body: loginRequest) { [weak self] (result: Result<UserResponse, Error>) in
             
             switch result {
                case .success(let user):
-                DispatchQueue.main.async(execute: {
-                    self.message = "Success"
-                })
-                debugPrint("Logged in user:", user)
+                DispatchQueue.main.async {
+                    self?.message = "Success"
+                    self?.currentUser = user
+                }
+                print("✅ Logged in user:", user)
                case .failure(let error):
-                DispatchQueue.main.async(execute: {
-                    self.message = "Failure"
-                    self.errorDetails = error.localizedDescription
-                })
-                debugPrint("Login error:", error)
+                DispatchQueue.main.async {
+                    self?.message = "Failure"
+                    self?.errorDetails = error.localizedDescription
+                }
+                print("❌ Login error:", error)
                }
         }
     }

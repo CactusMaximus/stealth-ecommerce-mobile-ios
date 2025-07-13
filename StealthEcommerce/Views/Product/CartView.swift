@@ -10,7 +10,11 @@ import SwiftUI
 struct CartView: View {
     @EnvironmentObject private var cartViewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
-    @State private var showingCheckoutSuccess = false
+    @State private var showingShippingAddressView = false
+    @State private var proceedToConfirmation = false
+    
+    // Hardcoded user ID for demo purposes - in a real app, this would come from user authentication
+    let userId = "65f5a1d2e1b7c2a3d4f5e6a7"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -62,8 +66,10 @@ struct CartView: View {
                 }
                 .padding()
                 
-                Button(action: handleCheckout) {
-                    Text("Checkout")
+                Button(action: {
+                    showingShippingAddressView = true
+                }) {
+                    Text("Proceed to Checkout")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.yellow)
@@ -75,15 +81,21 @@ struct CartView: View {
         }
         .padding(.bottom, 20)
         .navigationTitle("Cart")
-        .alert(isPresented: $showingCheckoutSuccess) {
-            Alert(
-                title: Text("Order Placed!"),
-                message: Text("Your order has been successfully placed."),
-                dismissButton: .default(Text("OK")) {
-                    presentationMode.wrappedValue.dismiss()
-                }
-            )
+        .sheet(isPresented: $showingShippingAddressView) {
+            ShippingAddressView {
+                proceedToConfirmation = true
+            }
+            .environmentObject(cartViewModel)
         }
+        .background(
+            NavigationLink(
+                destination: OrderConfirmationView(userId: userId)
+                    .environmentObject(cartViewModel),
+                isActive: $proceedToConfirmation
+            ) {
+                EmptyView()
+            }
+        )
     }
     
     func cartItemView(for item: CartItem) -> some View {
@@ -103,11 +115,6 @@ struct CartView: View {
                 .bold()
         }
         .padding(.vertical, 8)
-    }
-    
-    func handleCheckout() {
-        cartViewModel.checkout()
-        showingCheckoutSuccess = true
     }
 }
 

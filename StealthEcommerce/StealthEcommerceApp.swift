@@ -24,6 +24,7 @@ struct StealthEcommerceApp: App {
                 .environmentObject(cartViewModel)
                 .environmentObject(orderViewModel)
                 .environmentObject(userViewModel)
+                .environmentObject(LocalizationManager.shared)
         }
     }
 }
@@ -33,43 +34,48 @@ struct ContentView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // Home tab
-            CategpriesView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-                .tag(0)
-            
-            // Browse tab
-            BrowseView()
-                .tabItem {
-                    Label("Browse", systemImage: "magnifyingglass")
-                }
-                .tag(1)
-            
-            // Shop tab (with cart icon)
-            CartView()
-                .tabItem {
-                    Label("Cart", systemImage: "cart")
-                }
-                .tag(2)
-            
-            // Admin-only product management tab
-            if userViewModel.isAdmin {
-                ProductManagementView()
+        if userViewModel.currentUser == nil {
+            LoginView()
+                .environmentObject(userViewModel)
+        } else {
+            TabView(selection: $selectedTab) {
+                // Home tab
+                CategpriesView()
                     .tabItem {
-                        Label("Manage", systemImage: "square.and.pencil")
+                        Label("Home", systemImage: "house")
                     }
-                    .tag(3)
-            }
-            
-            // Profile tab
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
+                    .tag(0)
+                
+                // Browse tab
+                BrowseView()
+                    .tabItem {
+                        Label("Browse", systemImage: "magnifyingglass")
+                    }
+                    .tag(1)
+                
+                // Shop tab (with cart icon)
+                CartView()
+                    .tabItem {
+                        Label("Cart", systemImage: "cart")
+                    }
+                    .tag(2)
+                
+                // Admin-only product management tab
+                if userViewModel.isAdmin {
+                    ProductManagementView()
+                        .tabItem {
+                            Label("Manage", systemImage: "square.and.pencil")
+                        }
+                        .tag(3)
                 }
-                .tag(4)
+                
+                // Profile tab
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
+                    .tag(4)
+            }
         }
     }
 }

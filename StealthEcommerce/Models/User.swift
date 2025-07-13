@@ -16,10 +16,10 @@ struct User: Codable {
 
 //Model for User Response
 struct UserResponse: Codable {
-    let email: String
-    let firstName: String
-    let lastName: String
-    let address: Address
+    var email: String
+    var firstName: String
+    var lastName: String
+    var address: Address
     let _id: String
     let createdAt: String
     let updatedAt: String

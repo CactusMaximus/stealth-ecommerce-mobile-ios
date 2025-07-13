@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @StateObject private var viewModel = UserViewModel()
+    @EnvironmentObject private var viewModel: UserViewModel
     @EnvironmentObject private var localizationManager: LocalizationManager
     
     @State private var username: String = ""
@@ -198,4 +198,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(UserViewModel())
 }

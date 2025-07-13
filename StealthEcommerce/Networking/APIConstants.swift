@@ -1,7 +1,7 @@
 import Foundation
 
 struct APIConstants {
-    // Set to true to use localhost, false to use the production server
+    // Set to true to use actual API calls instead of mock data
     static let useLocalhost = true
     
     // Base URLs

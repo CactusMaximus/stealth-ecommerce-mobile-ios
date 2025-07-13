@@ -14,11 +14,61 @@ class OrderViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var currentPage = 1
     @Published var hasMorePages = false
+    @Published var useMockData = false
     
     private let networkService = NetworkService.shared
     
     // Define EmptyRequest struct for GET requests
     struct EmptyRequest: Codable {}
+    
+    // Load mock orders for demo purposes
+    func loadMockOrders() {
+        isLoading = true
+        
+        // Simulate network delay
+        let workItem = DispatchWorkItem {
+            self.orders = [
+                Order(
+                    id: "ORD123456789",
+                    user: UserInfo(id: "user123", email: "demo@example.com", firstName: "John", lastName: "Doe"),
+                    items: [
+                        OrderItem(product: ProductInOrder(id: "p1", name: "Avocado", price: 2.99, imageUrl: ""), quantity: 3),
+                        OrderItem(product: ProductInOrder(id: "p2", name: "Banana", price: 1.99, imageUrl: ""), quantity: 2)
+                    ],
+                    totalAmount: 12.95,
+                    status: "delivered",
+                    shippingAddress: Address(street: "123 Main St", city: "San Francisco", state: "CA", zipCode: "94105"),
+                    createdAt: "2025-07-01T12:00:00.000Z"
+                ),
+                Order(
+                    id: "ORD987654321",
+                    user: UserInfo(id: "user123", email: "demo@example.com", firstName: "John", lastName: "Doe"),
+                    items: [
+                        OrderItem(product: ProductInOrder(id: "p3", name: "Apple", price: 1.49, imageUrl: ""), quantity: 5)
+                    ],
+                    totalAmount: 7.45,
+                    status: "processing",
+                    shippingAddress: Address(street: "456 Market St", city: "San Francisco", state: "CA", zipCode: "94105"),
+                    createdAt: "2025-07-05T12:00:00.000Z"
+                ),
+                Order(
+                    id: "ORD456789123",
+                    user: UserInfo(id: "user123", email: "demo@example.com", firstName: "John", lastName: "Doe"),
+                    items: [
+                        OrderItem(product: ProductInOrder(id: "p4", name: "Orange", price: 0.99, imageUrl: ""), quantity: 10)
+                    ],
+                    totalAmount: 9.90,
+                    status: "pending",
+                    shippingAddress: Address(street: "789 Mission St", city: "San Francisco", state: "CA", zipCode: "94105"),
+                    createdAt: "2025-07-10T12:00:00.000Z"
+                )
+            ]
+            
+            self.isLoading = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: workItem)
+    }
     
     // Fetch order history for a user
     func fetchOrderHistory(userId: String, page: Int = 1, completion: @escaping () -> Void = {}) {

@@ -10,6 +10,7 @@ import Foundation
 
 struct ProfileDetailsView: View {
     @EnvironmentObject private var userViewModel: UserViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
     @State private var isEditing = false
     @State private var showingSuccessAlert = false
     @State private var showingErrorAlert = false
@@ -34,7 +35,7 @@ struct ProfileDetailsView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     } else {
-                        Text("Loading profile...")
+                        Text("profile_details.loading".localized)
                             .font(.title)
                             .fontWeight(.bold)
                             .redacted(reason: .placeholder)
@@ -50,11 +51,11 @@ struct ProfileDetailsView: View {
                 }
             }
             .padding()
-            .navigationTitle("Profile Details")
+            .navigationTitle("profile_details.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(isEditing ? "Save" : "Edit") {
+                    Button(isEditing ? "profile_details.save".localized : "profile_details.edit".localized) {
                         if isEditing {
                             saveProfile()
                         } else {
@@ -65,7 +66,7 @@ struct ProfileDetailsView: View {
                 
                 if isEditing {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Cancel") {
+                        Button("profile_details.cancel".localized) {
                             isEditing = false
                             // Reset form data to current user values
                             userViewModel.loadUserDataToForm()
@@ -75,22 +76,22 @@ struct ProfileDetailsView: View {
             }
             .overlay {
                 if userViewModel.isLoading {
-                    ProgressView("Loading...")
+                    ProgressView("common.loading".localized)
                         .padding()
                         .background(Color.white.opacity(0.8))
                         .cornerRadius(10)
                         .shadow(radius: 10)
                 }
             }
-            .alert("Profile Updated", isPresented: $showingSuccessAlert) {
-                Button("OK") { }
+            .alert("profile_details.alert.updated".localized, isPresented: $showingSuccessAlert) {
+                Button("common.ok".localized) { }
             } message: {
-                Text("Your profile has been successfully updated.")
+                Text("profile_details.alert.updated_message".localized)
             }
-            .alert("Update Failed", isPresented: $showingErrorAlert) {
-                Button("OK") { }
+            .alert("profile_details.alert.failed".localized, isPresented: $showingErrorAlert) {
+                Button("common.ok".localized) { }
             } message: {
-                Text(userViewModel.errorDetails ?? "An unknown error occurred.")
+                Text(userViewModel.errorDetails ?? "profile_details.alert.unknown_error".localized)
             }
         }
         .onAppear {
@@ -105,13 +106,13 @@ struct ProfileDetailsView: View {
         VStack(spacing: 20) {
             // Personal Information Section
             VStack(alignment: .leading, spacing: 15) {
-                Text("Personal Information")
+                Text("profile_details.personal_info".localized)
                     .font(.headline)
                     .padding(.bottom, 5)
                 
                 if let user = userViewModel.currentUser {
                     HStack {
-                        Text("First Name:")
+                        Text("profile_details.first_name".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.firstName)
@@ -120,7 +121,7 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("Last Name:")
+                        Text("profile_details.last_name".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.lastName)
@@ -129,13 +130,13 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("Email:")
+                        Text("profile_details.email".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.email)
                     }
                 } else {
-                    Text("Loading user details...")
+                    Text("profile_details.loading_user".localized)
                         .foregroundColor(.secondary)
                 }
             }
@@ -146,13 +147,13 @@ struct ProfileDetailsView: View {
             
             // Address Section
             VStack(alignment: .leading, spacing: 15) {
-                Text("Address")
+                Text("profile_details.address".localized)
                     .font(.headline)
                     .padding(.bottom, 5)
                 
                 if let user = userViewModel.currentUser {
                     HStack {
-                        Text("Street:")
+                        Text("profile_details.street".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.address.street)
@@ -161,7 +162,7 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("City:")
+                        Text("profile_details.city".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.address.city)
@@ -170,7 +171,7 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("State:")
+                        Text("profile_details.state".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.address.state)
@@ -179,13 +180,13 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("Zip Code:")
+                        Text("profile_details.zip_code".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.address.zipCode)
                     }
                 } else {
-                    Text("Loading address details...")
+                    Text("profile_details.loading_address".localized)
                         .foregroundColor(.secondary)
                 }
             }
@@ -196,13 +197,13 @@ struct ProfileDetailsView: View {
             
             // Account Information Section
             VStack(alignment: .leading, spacing: 15) {
-                Text("Account Information")
+                Text("profile_details.account_info".localized)
                     .font(.headline)
                     .padding(.bottom, 5)
                 
                 if let user = userViewModel.currentUser {
                     HStack {
-                        Text("Account ID:")
+                        Text("profile_details.account_id".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(user.id)
@@ -213,13 +214,13 @@ struct ProfileDetailsView: View {
                     Divider()
                     
                     HStack {
-                        Text("Member Since:")
+                        Text("profile_details.member_since".localized)
                             .fontWeight(.medium)
                         Spacer()
                         Text(formatDate(user.createdAt))
                     }
                 } else {
-                    Text("Loading account details...")
+                    Text("profile_details.loading_account".localized)
                         .foregroundColor(.secondary)
                 }
             }
@@ -234,22 +235,22 @@ struct ProfileDetailsView: View {
         VStack(spacing: 20) {
             // Personal Information Form
             VStack(alignment: .leading, spacing: 15) {
-                Text("Personal Information")
+                Text("profile_details.personal_info".localized)
                     .font(.headline)
                     .padding(.bottom, 5)
                 
-                TextField("First Name", text: $userViewModel.firstName)
+                TextField("profile_details.first_name".localized, text: $userViewModel.firstName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.words)
                 
-                TextField("Last Name", text: $userViewModel.lastName)
+                TextField("profile_details.last_name".localized, text: $userViewModel.lastName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.words)
                 
-                TextField("Email", text: $userViewModel.email)
+                TextField("profile_details.email".localized, text: $userViewModel.email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .keyboardType(.emailAddress)
                     .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
             }
             .padding()
             .background(Color(.systemBackground))
@@ -258,20 +259,23 @@ struct ProfileDetailsView: View {
             
             // Address Form
             VStack(alignment: .leading, spacing: 15) {
-                Text("Address")
+                Text("profile_details.address".localized)
                     .font(.headline)
                     .padding(.bottom, 5)
                 
-                TextField("Street", text: $userViewModel.street)
+                TextField("profile_details.street".localized, text: $userViewModel.street)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.words)
                 
-                TextField("City", text: $userViewModel.city)
+                TextField("profile_details.city".localized, text: $userViewModel.city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.words)
                 
-                TextField("State", text: $userViewModel.state)
+                TextField("profile_details.state".localized, text: $userViewModel.state)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.words)
                 
-                TextField("Zip Code", text: $userViewModel.zipCode)
+                TextField("profile_details.zip_code".localized, text: $userViewModel.zipCode)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
             }
@@ -305,12 +309,14 @@ struct ProfileDetailsView: View {
     private func formatDate(_ dateString: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.locale = Locale.current
         
         guard let date = dateFormatter.date(from: dateString) else {
             return dateString
         }
         
-        dateFormatter.dateFormat = "MMMM d, yyyy"
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         return dateFormatter.string(from: date)
     }
 }
@@ -319,5 +325,6 @@ struct ProfileDetailsView: View {
     NavigationView {
         ProfileDetailsView()
             .environmentObject(UserViewModel())
+            .environmentObject(LocalizationManager.shared)
     }
 } 

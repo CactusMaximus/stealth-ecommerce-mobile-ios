@@ -1,35 +1,48 @@
-//
-//  LocalizationExtensions.swift
-//  StealthEcommerce
-//
-//  Created by Shamith Ramdhani on 2025/07/13.
-//
-
 import Foundation
 import SwiftUI
 
-// Extension for String to get localized version
+// MARK: - String Extension for Localization
 extension String {
     var localized: String {
-        return NSLocalizedString(self, comment: "")
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.localizedBundle(), value: self, comment: "")
+    }
+    
+    func localized(with arguments: CVarArg...) -> String {
+        let localizedFormat = NSLocalizedString(self, tableName: nil, bundle: Bundle.localizedBundle(), value: self, comment: "")
+        return String(format: localizedFormat, arguments: arguments)
     }
 }
 
-// Extensions for SwiftUI components to use localization
+// MARK: - SwiftUI Text Extension
 extension Text {
     static func localized(_ key: String) -> Text {
         return Text(key.localized)
     }
-}
-
-extension TextField where Label == Text {
-    static func localized(_ key: String, text: Binding<String>) -> TextField<Text> {
-        return TextField(key.localized, text: text)
+    
+    static func localized(_ key: String, with arguments: CVarArg...) -> Text {
+        return Text(key.localized(with: arguments))
     }
 }
 
+// MARK: - SwiftUI TextField Extension
+extension TextField where Label == Text {
+    static func localized(_ titleKey: String, text: Binding<String>) -> TextField {
+        return TextField(titleKey.localized, text: text)
+    }
+}
+
+// MARK: - SwiftUI SecureField Extension
 extension SecureField where Label == Text {
-    static func localized(_ key: String, text: Binding<String>) -> SecureField<Text> {
-        return SecureField(key.localized, text: text)
+    static func localized(_ titleKey: String, text: Binding<String>) -> SecureField {
+        return SecureField(titleKey.localized, text: text)
+    }
+}
+
+// MARK: - SwiftUI Button Extension
+extension Button where Label == Text {
+    static func localized(_ titleKey: String, action: @escaping () -> Void) -> Button {
+        return Button(action: action) {
+            Text(titleKey.localized)
+        }
     }
 } 

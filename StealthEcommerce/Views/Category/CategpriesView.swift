@@ -11,6 +11,8 @@ struct CategpriesView: View {
     @State private var search: String = ""
     @State private var showCart: Bool = false
     @EnvironmentObject private var cartViewModel: CartViewModel
+    @EnvironmentObject private var localizationManager: LocalizationManager
+    @State private var refreshToggle: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -18,7 +20,7 @@ struct CategpriesView: View {
                 VStack (alignment: .leading, spacing: 16) {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                        TextField("Search for items", text: $search)
+                        TextField("browse.search".localized, text: $search)
                             .padding()
                             .background(Color(UIColor.secondarySystemBackground))
                             .cornerRadius(15)
@@ -26,7 +28,7 @@ struct CategpriesView: View {
                     
                     HeroView()
                     
-                    Text("Categories").font(.title).bold().padding(.top, 10)
+                    Text("categories.title".localized).font(.title).bold().padding(.top, 10)
                     VStack(alignment: .leading, spacing: 32) {
                         HStack(spacing: 12) {
                             NavigationLink(destination: BrowseView()) {
@@ -69,12 +71,19 @@ struct CategpriesView: View {
                                     .background(Color.red)
                                     .clipShape(Circle())
                                     .offset(x: 10, y: -10)
+                                    .accessibilityLabel("cart.item_count".localized(with: cartViewModel.items.count))
                             }
                         }
                     }
+                    .accessibilityLabel("tab.cart".localized)
                 }
             }
             .navigationTitle("BlockMart")
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
+                // Force refresh by toggling state
+                refreshToggle.toggle()
+            }
+            .id(refreshToggle) // Force view recreation when language changes
         }
     }
 }
@@ -82,4 +91,5 @@ struct CategpriesView: View {
 #Preview {
     CategpriesView()
         .environmentObject(CartViewModel())
+        .environmentObject(LocalizationManager.shared)
 }

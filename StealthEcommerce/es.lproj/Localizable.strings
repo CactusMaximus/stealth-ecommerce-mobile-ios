@@ -34,6 +34,237 @@
 "login.button.login" = "Iniciar sesión";
 "login.button.signup" = "¿No tienes una cuenta? Regístrate";
 "login.error.invalidCredentials" = "Nombre de usuario o contraseña inválidos"; 
-
 "login.email.label" = "Correo electrónico";
-"login.email.placeholder" = "Dirección de correo"; 
+"login.email.placeholder" = "Dirección de correo";
+
+/* Language Selector */
+"language_selector.button" = "Cambiar idioma";
+"language_selector.select" = "Cambiar a %@";
+
+/* Restart App View */
+"restart.title" = "Idioma Cambiado";
+"restart.message" = "Has cambiado tu idioma a %@.";
+"restart.recommendation" = "Para una mejor experiencia, por favor reinicia la aplicación.";
+"restart.button.now" = "Reiniciar Ahora";
+"restart.button.later" = "Más tarde";
+
+/* Tab Bar */
+"tab.home" = "Inicio";
+"tab.browse" = "Explorar";
+"tab.cart" = "Carrito";
+"tab.manage" = "Gestionar";
+"tab.profile" = "Perfil";
+
+/* Categories View */
+"categories.title" = "Categorías";
+"categories.featured" = "Productos Destacados";
+"categories.popular" = "Categorías Populares";
+"categories.all" = "Todas las Categorías";
+"categories.view_all" = "Ver Todo";
+
+/* Browse View */
+"browse.title" = "Explorar Productos";
+"browse.search" = "Buscar productos...";
+"browse.filter" = "Filtrar";
+"browse.sort" = "Ordenar";
+"browse.no_results" = "No se encontraron productos";
+"browse.try_again" = "Por favor, intenta con otro término de búsqueda";
+
+/* Product Detail View */
+"product.add_to_cart" = "Añadir al Carrito";
+"product.quantity" = "Cantidad";
+"product.price" = "Precio";
+"product.description" = "Descripción";
+"product.specifications" = "Especificaciones";
+"product.reviews" = "Reseñas";
+"product.related" = "Productos Relacionados";
+"product.out_of_stock" = "Agotado";
+"product.added_to_cart" = "Añadido al Carrito";
+
+/* Cart View */
+"cart.title" = "Carrito de Compras";
+"cart.empty" = "Tu carrito está vacío";
+"cart.continue_shopping" = "Continuar Comprando";
+"cart.start_shopping" = "Comenzar a Comprar";
+"cart.item_count" = "%d artículos";
+"cart.total" = "Total";
+"cart.checkout" = "Pagar";
+"cart.remove" = "Eliminar";
+"cart.update" = "Actualizar";
+
+/* Shipping Address View */
+"shipping.title" = "Dirección de Envío";
+"shipping.street" = "Calle";
+"shipping.city" = "Ciudad";
+"shipping.state" = "Estado";
+"shipping.zip" = "Código Postal";
+"shipping.continue" = "Continuar al Pago";
+"shipping.error.incomplete" = "Por favor, completa todos los campos de la dirección";
+
+/* Order Confirmation View */
+"order.confirmation.title" = "Confirmación de Pedido";
+"order.confirmation.success" = "¡Tu pedido ha sido realizado con éxito!";
+"order.confirmation.number" = "Número de Pedido: %@";
+"order.confirmation.email" = "Se ha enviado un correo de confirmación a tu dirección de correo electrónico.";
+"order.confirmation.continue" = "Continuar Comprando";
+"order.confirmation.view_orders" = "Ver Pedidos";
+
+/* Order History View */
+"order.history.title" = "Historial de Pedidos";
+"order.history.empty" = "Aún no has realizado ningún pedido";
+"order.history.start_shopping" = "Comenzar a Comprar";
+"order.history.order_number" = "Pedido #%@";
+"order.history.date" = "Fecha: %@";
+"order.history.status" = "Estado: %@";
+"order.history.total" = "Total: $%.2f";
+"order.history.loading" = "Cargando pedidos...";
+"order.history.error" = "No se pudieron cargar los pedidos";
+"order.history.try_again" = "Intentar de Nuevo";
+
+/* Profile View */
+"profile.title" = "Perfil";
+"profile.section.account" = "CUENTA";
+"profile.account.settings" = "Configuración de Cuenta";
+"profile.payment.methods" = "Métodos de Pago";
+"profile.section.orders" = "PEDIDOS";
+"profile.order.history" = "Historial de Pedidos";
+"profile.saved.items" = "Artículos Guardados";
+"profile.section.support" = "AYUDA";
+"profile.help.center" = "Centro de Ayuda";
+"profile.contact.us" = "Contáctenos";
+"profile.logout" = "Cerrar Sesión";
+"profile.delete_account" = "Eliminar Cuenta";
+"profile.loading" = "Cargando perfil...";
+"profile.error.loading" = "Error al cargar datos del usuario";
+"profile.logout.confirmation" = "¿Está seguro que desea cerrar sesión?";
+
+/* Profile Language Selector */
+"profile.section.preferences" = "PREFERENCIAS";
+"profile.language" = "Idioma";
+"profile.language.selection" = "Seleccionar Idioma";
+
+/* Profile Details View */
+"profile_details.title" = "Detalles del Perfil";
+"profile_details.loading" = "Cargando perfil...";
+"profile_details.edit" = "Editar";
+"profile_details.save" = "Guardar";
+"profile_details.cancel" = "Cancelar";
+"profile_details.loading_user" = "Cargando datos del usuario...";
+"profile_details.loading_address" = "Cargando detalles de dirección...";
+"profile_details.loading_account" = "Cargando detalles de cuenta...";
+
+"profile_details.personal_info" = "Información Personal";
+"profile_details.first_name" = "Nombre:";
+"profile_details.last_name" = "Apellido:";
+"profile_details.email" = "Correo:";
+
+"profile_details.address" = "Dirección";
+"profile_details.street" = "Calle:";
+"profile_details.city" = "Ciudad:";
+"profile_details.state" = "Estado:";
+"profile_details.zip_code" = "Código Postal:";
+
+"profile_details.account_info" = "Información de Cuenta";
+"profile_details.account_id" = "ID de Cuenta:";
+"profile_details.member_since" = "Miembro Desde:";
+
+"profile_details.alert.updated" = "Perfil Actualizado";
+"profile_details.alert.updated_message" = "Tu perfil ha sido actualizado exitosamente.";
+"profile_details.alert.failed" = "Actualización Fallida";
+"profile_details.alert.unknown_error" = "Ocurrió un error desconocido.";
+
+/* Settings View */
+"settings.title" = "Configuración";
+"settings.notifications" = "Notificaciones";
+"settings.language" = "Idioma";
+"settings.region" = "Región";
+"settings.theme" = "Tema";
+"settings.privacy" = "Política de Privacidad";
+"settings.terms" = "Términos de Servicio";
+"settings.about" = "Acerca de";
+"settings.version" = "Versión";
+
+/* Product Management View */
+"product_management.title" = "Gestión de Productos";
+"product_management.add" = "Añadir Producto";
+"product_management.edit" = "Editar Producto";
+"product_management.delete" = "Eliminar Producto";
+"product_management.no_products" = "No se encontraron productos";
+"product_management.add_first" = "Añade tu primer producto";
+"product_management.search" = "Buscar productos...";
+"product_management.sample" = "Producto de Muestra";
+
+/* Add Product View */
+"add_product.title" = "Añadir Producto";
+"add_product.name" = "Nombre del Producto";
+"add_product.price" = "Precio";
+"add_product.description" = "Descripción";
+"add_product.category" = "Categoría";
+"add_product.image" = "Añadir Imagen";
+"add_product.save" = "Guardar Producto";
+"add_product.cancel" = "Cancelar";
+"add_product.success" = "Producto añadido con éxito";
+"add_product.error" = "Error al añadir producto";
+
+/* Common */
+"common.ok" = "Aceptar";
+"common.cancel" = "Cancelar";
+"common.error" = "Error";
+"common.loading" = "Cargando...";
+"common.save" = "Guardar";
+"common.delete" = "Eliminar";
+"common.edit" = "Editar";
+"common.done" = "Hecho";
+"common.continue" = "Continuar";
+"common.back" = "Atrás";
+"common.next" = "Siguiente";
+"common.retry" = "Reintentar";
+
+/* Error Messages */
+"error.network" = "Error de red. Por favor, comprueba tu conexión.";
+"error.server" = "Error del servidor. Por favor, inténtalo de nuevo más tarde.";
+"error.timeout" = "La solicitud ha expirado. Por favor, inténtalo de nuevo.";
+"error.unknown" = "Ha ocurrido un error desconocido.";
+"error.session_expired" = "Tu sesión ha expirado. Por favor, inicia sesión de nuevo.";
+"error.permission_denied" = "Permiso denegado. No tienes acceso a este recurso.";
+"error.not_found" = "El recurso solicitado no fue encontrado.";
+"error.validation" = "Por favor, revisa tu entrada e inténtalo de nuevo.";
+
+/* Status Messages */
+"status.pending" = "Pendiente";
+"status.processing" = "Procesando";
+"status.shipped" = "Enviado";
+"status.delivered" = "Entregado";
+"status.cancelled" = "Cancelado"; 
+
+/* BlockMart */
+"blockmart.title" = "BlockMart";
+"blockmart.search" = "Buscar productos..."; 
+
+/* Cart Additional */
+"cart.summary" = "Resumen";
+"cart.subtotal" = "Subtotal";
+"cart.shipping" = "Envío";
+"cart.total" = "Total";
+"cart.proceed_checkout" = "Proceder al Pago";
+"cart.quantity" = "Cantidad: %d";
+"cart.price_each" = "$%.2f cada uno";
+
+/* Browse Additional */
+"browse.loading" = "Cargando productos...";
+"browse.no_results" = "No se encontraron productos que coincidan con '%@'";
+"browse.clear_search" = "Borrar Búsqueda";
+"browse.stock" = "Existencias: %d";
+"browse.error.loading" = "Error al cargar productos: %@";
+
+/* Product Management Additional */
+"product_management.title" = "Gestión de Productos";
+"product_management.search" = "Buscar productos...";
+"product_management.loading" = "Cargando productos...";
+"product_management.no_products" = "No hay productos disponibles";
+"product_management.no_results" = "No se encontraron productos que coincidan con '%@'";
+"product_management.clear_search" = "Borrar Búsqueda";
+"product_management.stock" = "Existencias: %d";
+"product_management.add" = "Añadir Producto";
+"product_management.delete.title" = "Eliminar Producto";
+"product_management.delete.confirmation" = "¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer."; 

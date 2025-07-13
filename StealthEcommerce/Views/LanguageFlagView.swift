@@ -57,5 +57,4 @@ struct LanguageFlagView: View {
         LanguageFlagView(region: .spanish, isSelected: false)
     }
     .padding()
-    .previewLayout(.sizeThatFits)
 } 

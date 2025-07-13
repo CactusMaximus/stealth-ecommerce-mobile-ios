@@ -9,100 +9,31 @@ import SwiftUI
 
 struct OrderHistoryView: View {
     @StateObject private var orderViewModel = OrderViewModel()
-    @State private var isRetrying = false
+    @EnvironmentObject private var localizationManager: LocalizationManager
+    @State private var refreshToggle: Bool = false
     let userId: String
     
     var body: some View {
         VStack {
             if orderViewModel.isLoading {
-                ProgressView("Loading orders...")
-                    .padding(.top, 40)
-            } else if let errorMessage = orderViewModel.errorMessage {
-                VStack(spacing: 20) {
-                    Image(systemName: errorMessage.contains("No order history") ? "cart" : "exclamationmark.triangle")
-                        .font(.system(size: 70))
-                        .foregroundColor(errorMessage.contains("No order history") ? .blue : .orange)
-                    
-                    Text("Unable to load orders")
-                        .font(.title)
-                        .foregroundColor(.primary)
-                    
-                    Text(errorMessage)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                    
-                    if errorMessage.contains("No order history") {
-                        // Show "Shop Now" button for users with no orders
-                        NavigationLink(destination: BrowseView()) {
-                            Text("Shop Now")
-                                .fontWeight(.medium)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                        .padding(.horizontal, 40)
-                        .padding(.top, 10)
-                    } else {
-                        // Show retry button for other errors
-                        Button(action: {
-                            retryFetch()
-                        }) {
-                            HStack {
-                                if isRetrying {
-                                    ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                        .scaleEffect(0.8)
-                                } else {
-                                    Image(systemName: "arrow.clockwise")
-                                }
-                                Text("Try Again")
-                                    .fontWeight(.medium)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                        }
-                        .disabled(isRetrying)
-                        .padding(.horizontal, 40)
-                        .padding(.top, 10)
-                    }
-                }
-                .padding()
+                ProgressView("order.history.loading".localized)
             } else if orderViewModel.orders.isEmpty {
                 VStack(spacing: 20) {
                     Image(systemName: "doc.text")
                         .font(.system(size: 70))
                         .foregroundColor(.gray)
-                    Text("No orders found")
+                    Text("order.history.empty".localized)
                         .font(.title)
                         .foregroundColor(.gray)
-                    Text("Your order history will appear here")
+                    Text("order.history.start_shopping".localized)
                         .foregroundColor(.secondary)
-                    
-                    NavigationLink(destination: BrowseView()) {
-                        Text("Start Shopping")
-                            .fontWeight(.medium)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal, 40)
-                    .padding(.top, 10)
                 }
-                .padding()
             } else {
                 List {
                     ForEach(orderViewModel.orders) { order in
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
-                                Text("Order #\(order.id.count > 6 ? String(order.id.suffix(6)) : order.id)")
+                                Text("order.history.order_number".localized(with: String(order.id.suffix(6))))
                                     .font(.headline)
                                 Spacer()
                                 Text(order.formattedDate)
@@ -111,16 +42,15 @@ struct OrderHistoryView: View {
                             }
                             
                             HStack {
-                                Text("\(order.items.count) item\(order.items.count == 1 ? "" : "s")")
+                                Text("cart.item_count".localized(with: order.items.count))
                                     .foregroundColor(.gray)
                                 Spacer()
-                                Text("$\(String(format: "%.2f", order.totalAmount))")
+                                Text("order.history.total".localized(with: order.totalAmount))
                                     .font(.headline)
                             }
                             
                             HStack {
-                                Text("Status:")
-                                Text(order.status.capitalized)
+                                Text("order.history.status".localized(with: getLocalizedStatus(for: order.status)))
                                     .foregroundColor(statusColor(for: order.status))
                                     .fontWeight(.medium)
                             }
@@ -130,33 +60,21 @@ struct OrderHistoryView: View {
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {
-                    await refreshOrders()
+                    orderViewModel.fetchOrderHistory(userId: userId)
                 }
             }
         }
-        .navigationTitle("Order History")
+        .navigationTitle("order.history.title".localized)
         .onAppear {
-            // Load order history if not already loaded
-            if orderViewModel.orders.isEmpty && orderViewModel.errorMessage == nil {
-                orderViewModel.fetchOrderHistory(userId: userId)
-            }
+            // For demo purposes, load mock orders instead of real API calls
+            orderViewModel.useMockData = true
+            orderViewModel.loadMockOrders()
         }
-    }
-    
-    private func retryFetch() {
-        isRetrying = true
-        orderViewModel.fetchOrderHistory(userId: userId) {
-            isRetrying = false
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))) { _ in
+            // Force refresh by toggling state
+            refreshToggle.toggle()
         }
-    }
-    
-    private func refreshOrders() async {
-        // Wrap in Task to convert completion handler to async
-        await withCheckedContinuation { continuation in
-            orderViewModel.fetchOrderHistory(userId: userId) {
-                continuation.resume()
-            }
-        }
+        .id(refreshToggle) // Force view recreation when language changes
     }
     
     private func statusColor(for status: String) -> Color {
@@ -175,10 +93,28 @@ struct OrderHistoryView: View {
             return .gray
         }
     }
+    
+    private func getLocalizedStatus(for status: String) -> String {
+        switch status.lowercased() {
+        case "pending":
+            return "status.pending".localized
+        case "processing":
+            return "status.processing".localized
+        case "shipped":
+            return "status.shipped".localized
+        case "delivered":
+            return "status.delivered".localized
+        case "cancelled":
+            return "status.cancelled".localized
+        default:
+            return status.capitalized
+        }
+    }
 }
 
 #Preview {
     NavigationView {
         OrderHistoryView(userId: "user123")
+            .environmentObject(LocalizationManager.shared)
     }
 } 

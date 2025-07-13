@@ -6,12 +6,31 @@
 //
 
 import SwiftUI
+import UIKit
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        // Configure Firebase
+        FirebaseApp.configure()
+        // App initialization
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        // Handle Google Sign-In callback
+        return GoogleSignInManager.shared.handleSignInCallback(url: url)
+    }
+}
 
 @main
 struct StealthEcommerceApp: App {
     @StateObject private var cartViewModel = CartViewModel()
     @StateObject private var orderViewModel = OrderViewModel()
     @StateObject private var userViewModel = UserViewModel()
+    
+    // Register app delegate for handling URL callbacks
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
         // Print API endpoints for debugging
@@ -25,6 +44,10 @@ struct StealthEcommerceApp: App {
                 .environmentObject(orderViewModel)
                 .environmentObject(userViewModel)
                 .environmentObject(LocalizationManager.shared)
+                .onOpenURL { url in
+                    // Handle Google Sign-In callback
+                    GoogleSignInManager.shared.handleSignInCallback(url: url)
+                }
         }
     }
 }

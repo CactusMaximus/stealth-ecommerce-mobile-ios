@@ -17,6 +17,7 @@ class UserViewModel: ObservableObject {
     @Published var currentUser: UserResponse?
     @Published var isAdmin: Bool = false // Add isAdmin property
     @Published var isLoading = false
+    @Published var isGoogleSignInLoading = false
     
     // For editing profile
     @Published var firstName: String = ""
@@ -28,6 +29,10 @@ class UserViewModel: ObservableObject {
     @Published var zipCode: String = ""
     
     private var networkService: NetworkService
+    private var googleSignInManager = GoogleSignInManager.shared
+    
+    // Define EmptyRequest struct for GET requests
+    struct EmptyRequest: Codable {}
     
     init(networkService: NetworkService = NetworkService.shared) {
         self.networkService = networkService
@@ -306,6 +311,40 @@ class UserViewModel: ObservableObject {
         }
         
         task.resume()
+    }
+    
+    // Sign in with Google
+    func signInWithGoogle() {
+        isGoogleSignInLoading = true
+        
+        googleSignInManager.signIn { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isGoogleSignInLoading = false
+                
+                switch result {
+                case .success(let googleUser):
+                    // Handle successful Google sign-in
+                    print("✅ Google Sign-In successful: \(googleUser.email)")
+                    
+                    // Check if user exists in our system
+                    self?.authenticateGoogleUser(googleUser: googleUser)
+                    
+                case .failure(let error):
+                    self?.message = "Failure"
+                    self?.errorDetails = "Google Sign-In failed: \(error.localizedDescription)"
+                    print("❌ Google Sign-In error:", error)
+                }
+            }
+        }
+    }
+    
+    // Authenticate Google user with our backend
+    private func authenticateGoogleUser(googleUser: GoogleUser) {
+        isLoading = true
+        
+        // Convert Google user to our User model and register directly
+        let newUser = googleUser.toAppUser()
+        createUser(user: newUser)
     }
     
     // Load user data to form fields for editing

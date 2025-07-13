@@ -2,95 +2,59 @@
 //  AddProductView.swift
 //  StealthEcommerce
 //
-//  Created by Shamith Ramdhani on 2025/07/10.
+//  Created by Shamith Ramdhani on 2025/07/13.
 //
 
 import SwiftUI
 
 struct AddProductView: View {
-    @StateObject private var viewModel = ProductViewModel()
     @Environment(\.dismiss) private var dismiss
-    @State private var showImagePicker = false
-    @State private var selectedImage: UIImage?
+    @StateObject private var viewModel = ProductViewModel()
     
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("Product Information")) {
-                    TextField("Product Name", text: $viewModel.name)
-                        .autocapitalization(.words)
-                    
-                    TextField("Description", text: $viewModel.description, axis: .vertical)
-                        .lineLimit(4...)
-                    
-                    HStack {
-                        Text("$")
-                        TextField("Price", text: $viewModel.price)
-                            .keyboardType(.decimalPad)
-                    }
-                    
+                Section(header: Text("Product Details")) {
+                    TextField("Name", text: $viewModel.name)
+                    TextField("Description", text: $viewModel.description)
+                    TextField("Price", text: $viewModel.price)
+                        .keyboardType(.decimalPad)
                     Picker("Category", selection: $viewModel.category) {
                         Text("Select a category").tag("")
                         ForEach(viewModel.categories, id: \.self) { category in
                             Text(category).tag(category)
                         }
                     }
-                    
-                    TextField("Stock Quantity", text: $viewModel.stock)
+                    TextField("Stock", text: $viewModel.stock)
                         .keyboardType(.numberPad)
+                    TextField("Image URL", text: $viewModel.imageUrl)
+                        .keyboardType(.URL)
                 }
                 
-                Section(header: Text("Product Image")) {
-                    TextField("Image URL", text: $viewModel.imageUrl)
-                        .autocapitalization(.none)
-                        .keyboardType(.URL)
-                    
-                    if !viewModel.imageUrl.isEmpty {
-                        AsyncImage(url: URL(string: viewModel.imageUrl)) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 200)
-                            case .failure:
-                                Image(systemName: "photo")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.gray)
-                                Text("Invalid URL or image failed to load")
-                                    .foregroundColor(.red)
-                                    .font(.caption)
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                if let errorMessage = viewModel.errorMessage {
+                    Section {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
                     }
                 }
                 
                 Section {
-                    Button(action: submitProduct) {
-                        HStack {
-                            Spacer()
-                            if viewModel.isLoading {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            } else {
-                                Text("Add Product")
-                                    .fontWeight(.semibold)
+                    Button("Create Product") {
+                        viewModel.createProduct { success in
+                            if success {
+                                dismiss()
                             }
-                            Spacer()
                         }
                     }
                     .disabled(viewModel.isLoading)
-                    .listRowBackground(Color.blue)
-                    .foregroundColor(.white)
+                    
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
                 }
             }
-            .navigationTitle("Add New Product")
+            .navigationTitle("Add Product")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -99,46 +63,12 @@ struct AddProductView: View {
                     }
                 }
             }
-            .alert(isPresented: $viewModel.showSuccessAlert) {
-                Alert(
-                    title: Text("Success"),
-                    message: Text("Product added successfully"),
-                    dismissButton: .default(Text("OK")) {
-                        dismiss()
-                    }
-                )
-            }
-            .overlay(
-                Group {
-                    if let errorMessage = viewModel.errorMessage {
-                        VStack {
-                            Spacer()
-                            Text(errorMessage)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.red.opacity(0.9))
-                                .cornerRadius(10)
-                                .padding()
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                        if viewModel.errorMessage == errorMessage {
-                                            viewModel.errorMessage = nil
-                                        }
-                                    }
-                                }
-                        }
-                    }
+            .alert("Product Created", isPresented: $viewModel.showSuccessAlert) {
+                Button("OK") {
+                    dismiss()
                 }
-            )
-        }
-    }
-    
-    private func submitProduct() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-        
-        viewModel.createProduct { success in
-            if success {
-                // The alert will handle dismissal
+            } message: {
+                Text("The product was created successfully.")
             }
         }
     }

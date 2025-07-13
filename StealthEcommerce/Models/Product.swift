@@ -12,6 +12,8 @@ struct Product: Codable, Identifiable {
     let description: String
     let price: Double
     let category: String
+    let stock: Int
+    let imageUrl: String
 
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -19,5 +21,17 @@ struct Product: Codable, Identifiable {
         case description
         case price
         case category
+        case stock
+        case imageUrl
     }
+}
+
+// Product creation request model
+struct ProductCreationRequest: Codable {
+    let name: String
+    let description: String
+    let price: Double
+    let category: String
+    let stock: Int
+    let imageUrl: String
 }

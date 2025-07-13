@@ -12,11 +12,18 @@ class UserViewModel: ObservableObject {
     @Published var message: String?
     @Published var errorDetails: String?
     @Published var currentUser: UserResponse?
+    @Published var isAdmin: Bool = false // Add isAdmin property
     
     private var networkService: NetworkService
     
     init(networkService: NetworkService = NetworkService.shared) {
         self.networkService = networkService
+        
+        // For testing purposes, set isAdmin to true
+        // In a real app, this would be determined by the user's role from the API
+        #if DEBUG
+        isAdmin = true
+        #endif
     }
     
     //POST User - Create a user
@@ -28,6 +35,8 @@ class UserViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self?.message = "Success"
                     self?.currentUser = user
+                    // In a real app, you would check if the user has admin role
+                    // self?.isAdmin = user.isAdmin
                 }
                 print("✅ Registered user:", user)
                case .failure(let error):
@@ -52,6 +61,8 @@ class UserViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self?.message = "Success"
                     self?.currentUser = user
+                    // In a real app, you would check if the user has admin role
+                    // self?.isAdmin = user.isAdmin
                 }
                 print("✅ Logged in user:", user)
                case .failure(let error):

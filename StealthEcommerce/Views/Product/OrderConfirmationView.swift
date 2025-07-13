@@ -15,6 +15,8 @@ struct OrderConfirmationView: View {
     let userId: String
     
     @State private var showingOrderHistory = false
+    @State private var orderSuccess = false
+    @State private var orderError: String? = nil
     
     var body: some View {
         ScrollView {
@@ -103,7 +105,7 @@ struct OrderConfirmationView: View {
                 .cornerRadius(10)
                 .disabled(orderViewModel.isLoading)
                 
-                if let error = orderViewModel.error {
+                if let error = orderError {
                     Text(error)
                         .foregroundColor(.red)
                         .multilineTextAlignment(.center)
@@ -113,8 +115,8 @@ struct OrderConfirmationView: View {
             .padding()
         }
         .navigationTitle("Confirm Order")
-        .navigationBarBackButtonHidden(orderViewModel.orderSuccess)
-        .alert(isPresented: .constant(orderViewModel.orderSuccess)) {
+        .navigationBarBackButtonHidden(orderSuccess)
+        .alert(isPresented: $orderSuccess) {
             Alert(
                 title: Text("Order Placed!"),
                 message: Text("Your order has been successfully placed."),
@@ -131,17 +133,47 @@ struct OrderConfirmationView: View {
                 EmptyView()
             }
         )
+        .onAppear {
+            // Reset error state
+            orderError = nil
+        }
+        .onChange(of: orderViewModel.errorMessage) { newValue in
+            if let errorMessage = newValue {
+                orderError = "Failed to create order: \(errorMessage)"
+                
+                // Check for specific network errors
+                if errorMessage.contains("NetworkError") {
+                    orderError = "Network error: Please check your internet connection and try again."
+                } else if errorMessage.contains("serverError") {
+                    // Extract the actual error message from the serverError
+                    if let range = errorMessage.range(of: "message: \"") {
+                        let startIndex = range.upperBound
+                        if let endRange = errorMessage[startIndex...].range(of: "\", code:") {
+                            let endIndex = endRange.lowerBound
+                            let actualMessage = String(errorMessage[startIndex..<endIndex])
+                            orderError = "Server error: \(actualMessage)"
+                        }
+                    }
+                }
+            }
+        }
     }
     
     private func placeOrder() {
+        // Clear previous errors
+        orderError = nil
+        
         orderViewModel.createOrder(
             userId: userId,
-            cartItems: cartViewModel.items,
+            items: cartViewModel.items,
             shippingAddress: cartViewModel.shippingAddress
         ) { success in
             if success {
                 // Clear the cart after successful order
                 cartViewModel.clearCart()
+                orderSuccess = true
+            } else if let errorMessage = orderViewModel.errorMessage {
+                orderError = errorMessage
             }
         }
     }

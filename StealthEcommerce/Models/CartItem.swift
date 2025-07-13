@@ -12,6 +12,7 @@ struct CartItem: Identifiable {
     let product: Product
     var quantity: Int
     
+    // Computed property for the total price of this item
     var total: Double {
         return product.price * Double(quantity)
     }

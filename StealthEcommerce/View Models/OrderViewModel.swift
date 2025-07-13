@@ -8,297 +8,273 @@
 import Foundation
 import SwiftUI
 
-// Empty struct for GET requests
-struct EmptyRequest: Codable {}
-
 class OrderViewModel: ObservableObject {
-    @Published var isLoading = false
-    @Published var error: String? = nil
-    @Published var orderSuccess = false
     @Published var orders: [Order] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String? = nil
     @Published var currentPage = 1
-    @Published var totalPages = 1
     @Published var hasMorePages = false
-    @Published var useMockData = false
     
-    private let networkService: NetworkService
-    private let pageSize = 2 // Reduced from 5 to 2 to handle smaller responses
+    private let networkService = NetworkService.shared
     
-    // Timer to handle timeout for API calls
-    private var loadingTimer: Timer?
-    private let timeoutInterval: TimeInterval = 15.0 // 15 seconds timeout
+    // Define EmptyRequest struct for GET requests
+    struct EmptyRequest: Codable {}
     
-    init(networkService: NetworkService = NetworkService.shared) {
-        self.networkService = networkService
+    // Fetch order history for a user
+    func fetchOrderHistory(userId: String, page: Int = 1, completion: @escaping () -> Void = {}) {
+        isLoading = true
+        errorMessage = nil
+        
+        // First check if the server is reachable
+        APIConstants.checkServerConnection { isConnected, errorMsg in
+            if !isConnected {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = errorMsg ?? "Unable to connect to the server. Please check your internet connection and try again."
+                    print("❌ Server connection check failed: \(errorMsg ?? "Unknown error")")
+                    completion()
+                }
+                return
+            }
+            
+            let url = "\(APIConstants.Endpoints.orders)/user/\(userId)?page=\(page)"
+            
+            // Use a custom URLSession task to first check the response content type
+            guard let requestUrl = URL(string: url) else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorMessage = "Invalid URL"
+                    completion()
+                }
+                return
+            }
+            
+            var request = URLRequest(url: requestUrl)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            print("🔍 Fetching order history from: \(url)")
+            
+            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+                DispatchQueue.main.async {
+                    self?.isLoading = false
+                    
+                    // Handle network error
+                    if let error = error {
+                        self?.errorMessage = "Network error: \(error.localizedDescription)"
+                        print("❌ Order history fetch error: \(error)")
+                        completion()
+                        return
+                    }
+                    
+                    // Check response type
+                    if let httpResponse = response as? HTTPURLResponse {
+                        let statusCode = httpResponse.statusCode
+                        print("📡 Response Status Code: \(statusCode)")
+                        
+                        // Handle 404 specifically with a user-friendly message
+                        if statusCode == 404 {
+                            self?.errorMessage = "No order history found. Please place an order first."
+                            print("❌ 404 Not Found: No orders found for this user")
+                            completion()
+                            return
+                        }
+                        
+                        // Check content type
+                        if let contentType = httpResponse.value(forHTTPHeaderField: "Content-Type") {
+                            print("📄 Content Type: \(contentType)")
+                            
+                            // If we're getting HTML instead of JSON
+                            if contentType.contains("text/html") {
+                                if statusCode == 404 {
+                                    self?.errorMessage = "No order history found. Please place an order first."
+                                } else {
+                                    self?.errorMessage = "The server returned an unexpected response. Please try again later."
+                                }
+                                print("❌ Server returned HTML instead of JSON")
+                                
+                                // Print the HTML for debugging
+                                if let data = data, let htmlString = String(data: data, encoding: .utf8) {
+                                    print("📄 HTML Response: \(htmlString.prefix(500))...")
+                                }
+                                
+                                completion()
+                                return
+                            }
+                        }
+                        
+                        // Handle error status codes
+                        if statusCode >= 400 {
+                            var errorMsg = "Server error: \(statusCode)"
+                            
+                            // Try to extract error message from response
+                            if let data = data, let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                               let message = json["error"] as? String {
+                                errorMsg = message
+                            }
+                            
+                            // Provide more user-friendly messages for common errors
+                            switch statusCode {
+                            case 401:
+                                errorMsg = "Your session has expired. Please log in again."
+                            case 403:
+                                errorMsg = "You don't have permission to view these orders."
+                            case 500, 502, 503, 504:
+                                errorMsg = "The server is currently unavailable. Please try again later."
+                            default:
+                                break
+                            }
+                            
+                            self?.errorMessage = errorMsg
+                            print("❌ Server error: \(errorMsg)")
+                            completion()
+                            return
+                        }
+                    }
+                    
+                    // Ensure we have data
+                    guard let data = data else {
+                        self?.errorMessage = "No data received"
+                        print("❌ No data received")
+                        completion()
+                        return
+                    }
+                    
+                    // Print raw data for debugging
+                    print("📊 Received \(data.count) bytes")
+                    if data.count < 1000 {
+                        if let jsonString = String(data: data, encoding: .utf8) {
+                            print("📄 Raw JSON: \(jsonString)")
+                        }
+                    }
+                    
+                    // Handle empty response (which might be valid in some cases)
+                    if data.count == 0 || (data.count == 2 && String(data: data, encoding: .utf8) == "[]") {
+                        self?.orders = []
+                        self?.currentPage = 1
+                        self?.hasMorePages = false
+                        print("✅ Empty orders list received")
+                        completion()
+                        return
+                    }
+                    
+                    // Try to decode the response
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .iso8601
+                        
+                        let response = try decoder.decode(OrdersResponse.self, from: data)
+                        
+                        if page == 1 {
+                            // Replace existing orders if this is the first page
+                            self?.orders = response.orders
+                        } else {
+                            // Append to existing orders if this is a subsequent page
+                            self?.orders.append(contentsOf: response.orders)
+                        }
+                        
+                        // Update pagination info
+                        self?.currentPage = response.pagination.page
+                        self?.hasMorePages = response.pagination.page < response.pagination.pages
+                        
+                        print("✅ Successfully loaded \(response.orders.count) orders")
+                        completion()
+                    } catch {
+                        // Try to decode as a simple array of orders if the standard format fails
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .iso8601
+                            
+                            let orders = try decoder.decode([Order].self, from: data)
+                            if page == 1 {
+                                self?.orders = orders
+                            } else {
+                                self?.orders.append(contentsOf: orders)
+                            }
+                            
+                            // Set default pagination for array response
+                            self?.currentPage = 1
+                            self?.hasMorePages = false
+                            
+                            print("✅ Successfully loaded \(orders.count) orders (array format)")
+                            completion()
+                            return
+                        } catch {
+                            // Both decoding attempts failed
+                            self?.errorMessage = "Unable to load your orders. Please try again later."
+                            print("❌ Decoding Error: \(error)")
+                            
+                            // More detailed error information
+                            if let decodingError = error as? DecodingError {
+                                switch decodingError {
+                                case .dataCorrupted(let context):
+                                    print("Data corrupted: \(context.debugDescription)")
+                                    if let underlyingError = context.underlyingError {
+                                        print("Underlying error: \(underlyingError)")
+                                    }
+                                case .keyNotFound(let key, let context):
+                                    print("Key not found: \(key), context: \(context.debugDescription)")
+                                case .typeMismatch(let type, let context):
+                                    print("Type mismatch: expected \(type), context: \(context.debugDescription)")
+                                case .valueNotFound(let type, let context):
+                                    print("Value not found: expected \(type), context: \(context.debugDescription)")
+                                @unknown default:
+                                    print("Unknown decoding error")
+                                }
+                            }
+                            
+                            completion()
+                        }
+                    }
+                }
+            }.resume()
+        }
     }
     
     // Create a new order
-    func createOrder(userId: String, cartItems: [CartItem], shippingAddress: Address, completion: @escaping (Bool) -> Void) {
+    func createOrder(userId: String, items: [CartItem], shippingAddress: Address, completion: @escaping (Bool) -> Void) {
         isLoading = true
-        startLoadingTimer()
-        
-        // Convert CartItems to OrderItems
-        let orderItems = cartItems.map { cartItem in
-            return OrderItemRequest(
-                product: cartItem.product.id,
-                quantity: cartItem.quantity,
-                price: cartItem.product.price
-            )
-        }
-        
-        // Calculate total amount (used in the OrderRequest below)
-        let totalAmount = cartItems.reduce(0) { $0 + $1.total }
+        errorMessage = nil
         
         // Create order request
+        struct OrderItemRequest: Codable {
+            let product: String
+            let quantity: Int
+        }
+        
+        struct OrderRequest: Codable {
+            let user: String
+            let items: [OrderItemRequest]
+            let shippingAddress: Address
+        }
+        
+        // Convert cart items to order items
+        let orderItems = items.map { item in
+            OrderItemRequest(product: item.product.id, quantity: item.quantity)
+        }
+        
         let orderRequest = OrderRequest(
             user: userId,
             items: orderItems,
-            shippingAddress: shippingAddress,
-            totalAmount: totalAmount  // Add totalAmount to the request
+            shippingAddress: shippingAddress
         )
         
-        // Send API request
-        networkService.request(
-            url: APIConstants.Endpoints.orders,
-            method: .post,
-            body: orderRequest
-        ) { [weak self] (result: Result<Order, Error>) in
-            self?.stopLoadingTimer()
-            
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                
-                switch result {
-                case .success(let order):
-                    print("✅ Order created successfully: \(order.id)")
-                    self?.orderSuccess = true
-                    completion(true)
-                    
-                case .failure(let error):
-                    print("❌ Failed to create order: \(error)")
-                    self?.error = "Failed to create order: \(error.localizedDescription)"
-                    completion(false)
-                }
-            }
-        }
-    }
-    
-    // Fetch order history for a user
-    func fetchOrderHistory(userId: String, resetPage: Bool = false) {
-        if resetPage {
-            currentPage = 1
-            orders = []
-        }
+        let url = APIConstants.Endpoints.orders
         
-        // If we're already using mock data, just load it directly
-        if useMockData {
-            loadMockOrders()
-            return
-        }
-        
-        isLoading = true
-        startLoadingTimer()
-        
-        // Construct URL with pagination and user filter
-        let url = "\(APIConstants.Endpoints.orders)?user=\(userId)&page=\(currentPage)&limit=\(pageSize)"
-        
-        networkService.request(
-            url: url,
-            method: .get,
-            body: EmptyRequest()
-        ) { [weak self] (result: Result<OrdersResponse, Error>) in
-            self?.stopLoadingTimer()
-            
+        networkService.request(url: url, method: .post, body: orderRequest) { [weak self] (result: Result<OrderCreationResponse, Error>) in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 
                 switch result {
                 case .success(let response):
-                    if resetPage {
-                        self?.orders = response.orders
-                    } else {
-                        self?.orders.append(contentsOf: response.orders)
-                    }
-                    
-                    self?.totalPages = response.pagination.pages
-                    self?.hasMorePages = self?.currentPage ?? 1 < response.pagination.pages
-                    
+                    print("✅ Order created successfully: \(response.id ?? response.orderId ?? "Unknown ID")")
+                    completion(true)
                 case .failure(let error):
-                    print("❌ Failed to fetch orders: \(error)")
-                    
-                    // Check for specific "resource exceeds maximum size" error
-                    let nsError = error as NSError
-                    if nsError.domain == NSURLErrorDomain && nsError.code == -1103 {
-                        self?.error = "The server response is too large. Please try again or use mock data."
-                    } else {
-                        self?.error = "Failed to fetch orders: \(error.localizedDescription)"
-                    }
-                    
-                    // Don't automatically switch to mock data
-                    // Keep the error visible to the user
+                    self?.errorMessage = "Failed to create order: \(error.localizedDescription)"
+                    print("❌ Order creation error: \(error)")
+                    completion(false)
                 }
             }
         }
     }
-    
-    // Load next page of orders
-    func loadNextPage(userId: String) {
-        if !isLoading && hasMorePages {
-            currentPage += 1
-            fetchOrderHistory(userId: userId)
-        }
-    }
-    
-    // Toggle between mock data and real API
-    func toggleMockData() {
-        useMockData.toggle()
-        if useMockData {
-            loadMockOrders()
-        } else {
-            orders = []
-            currentPage = 1
-            totalPages = 1
-            hasMorePages = false
-        }
-    }
-    
-    // Handle timeout for API calls
-    private func startLoadingTimer() {
-        loadingTimer = Timer.scheduledTimer(withTimeInterval: timeoutInterval, repeats: false) { [weak self] _ in
-            DispatchQueue.main.async {
-                if self?.isLoading == true {
-                    self?.isLoading = false
-                    self?.error = "Request timed out. Please try again."
-                    
-                    // Don't automatically switch to mock data on timeout
-                }
-            }
-        }
-    }
-    
-    private func stopLoadingTimer() {
-        loadingTimer?.invalidate()
-        loadingTimer = nil
-    }
-    
-    // Load mock data for testing when API fails
-    func loadMockOrders() {
-        print("📝 Loading mock order data")
-        isLoading = true
-        
-        // Simulate network delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            guard let self = self else { return }
-            
-            let mockAddress = Address(
-                street: "123 Main St",
-                city: "San Francisco",
-                state: "CA",
-                zipCode: "94105"
-            )
-            
-            let mockUser = UserInfo(
-                id: "user123",
-                email: "test@example.com",
-                firstName: "John",
-                lastName: "Doe"
-            )
-            
-            // Create a variety of mock products
-            let mockProducts = [
-                ProductInOrder(id: "prod1", name: "Premium Avocado", price: 5.99, imageUrl: nil),
-                ProductInOrder(id: "prod2", name: "Organic Banana", price: 2.99, imageUrl: nil),
-                ProductInOrder(id: "prod3", name: "Fresh Strawberries", price: 4.50, imageUrl: nil),
-                ProductInOrder(id: "prod4", name: "Whole Grain Bread", price: 3.75, imageUrl: nil),
-                ProductInOrder(id: "prod5", name: "Free Range Eggs", price: 6.25, imageUrl: nil)
-            ]
-            
-            // Create more varied mock orders
-            var mockOrders = [Order]()
-            
-            // Order 1 - Delivered
-            mockOrders.append(
-                Order(
-                    id: "order1",
-                    user: mockUser,
-                    items: [
-                        OrderItem(product: mockProducts[0], quantity: 2, price: mockProducts[0].price),
-                        OrderItem(product: mockProducts[1], quantity: 3, price: mockProducts[1].price)
-                    ],
-                    totalAmount: 20.95,
-                    status: "delivered",
-                    shippingAddress: mockAddress,
-                    createdAt: "2025-07-10T12:00:00.000Z"
-                )
-            )
-            
-            // Order 2 - Processing
-            mockOrders.append(
-                Order(
-                    id: "order2",
-                    user: mockUser,
-                    items: [
-                        OrderItem(product: mockProducts[2], quantity: 2, price: mockProducts[2].price),
-                        OrderItem(product: mockProducts[3], quantity: 1, price: mockProducts[3].price)
-                    ],
-                    totalAmount: 12.75,
-                    status: "processing",
-                    shippingAddress: mockAddress,
-                    createdAt: "2025-07-05T15:30:00.000Z"
-                )
-            )
-            
-            // Order 3 - Shipped
-            mockOrders.append(
-                Order(
-                    id: "order3",
-                    user: mockUser,
-                    items: [
-                        OrderItem(product: mockProducts[4], quantity: 2, price: mockProducts[4].price),
-                        OrderItem(product: mockProducts[0], quantity: 1, price: mockProducts[0].price)
-                    ],
-                    totalAmount: 18.49,
-                    status: "shipped",
-                    shippingAddress: mockAddress,
-                    createdAt: "2025-06-28T09:15:00.000Z"
-                )
-            )
-            
-            // Order 4 - Pending
-            mockOrders.append(
-                Order(
-                    id: "order4",
-                    user: mockUser,
-                    items: [
-                        OrderItem(product: mockProducts[1], quantity: 4, price: mockProducts[1].price),
-                        OrderItem(product: mockProducts[3], quantity: 2, price: mockProducts[3].price)
-                    ],
-                    totalAmount: 19.46,
-                    status: "pending",
-                    shippingAddress: mockAddress,
-                    createdAt: "2025-07-11T08:45:00.000Z"
-                )
-            )
-            
-            self.orders = mockOrders
-            self.totalPages = 1
-            self.hasMorePages = false
-            self.isLoading = false
-            self.error = nil
-        }
-    }
-}
-
-// Request models
-struct OrderRequest: Codable {
-    let user: String
-    let items: [OrderItemRequest]
-    let shippingAddress: Address
-    let totalAmount: Double // Added totalAmount to the request
-}
-
-struct OrderItemRequest: Codable {
-    let product: String
-    let quantity: Int
-    let price: Double
 } 

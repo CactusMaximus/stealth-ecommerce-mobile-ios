@@ -114,6 +114,28 @@ struct LoginView: View {
                             .cornerRadius(50)
                     }
                     
+                    // OR divider
+                    HStack {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 1)
+                        
+                        Text("OR")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 1)
+                    }
+                    .padding(.vertical, 10)
+                    
+                    // Google Sign-In Button
+                    GoogleSignInButton(
+                        action: handleGoogleSignIn,
+                        isLoading: viewModel.isGoogleSignInLoading
+                    )
+                    
                     Button(action: {
                         goToRegistration = true
                     }) {
@@ -193,6 +215,11 @@ struct LoginView: View {
         }
         
         viewModel.loginUser(email: email, password: password)
+    }
+    
+    func handleGoogleSignIn() {
+        loginMessage = nil
+        viewModel.signInWithGoogle()
     }
 }
 

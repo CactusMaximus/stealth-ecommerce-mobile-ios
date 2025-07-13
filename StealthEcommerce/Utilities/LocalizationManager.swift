@@ -2,51 +2,47 @@
 //  LocalizationManager.swift
 //  StealthEcommerce
 //
-//  Created by Shamith Ramdhani on 2025/07/11.
+//  Created by Shamith Ramdhani on 2025/07/10.
 //
 
 import Foundation
 import SwiftUI
-import Combine
 
 class LocalizationManager: ObservableObject {
     static let shared = LocalizationManager()
     
-    @Published var currentLanguage: String
-    private var cancellables = Set<AnyCancellable>()
-    
-    private init() {
-        // Get current language from UserDefaults
-        if let languageCode = UserDefaults.standard.string(forKey: "AppleLanguages") {
-            let cleanCode = languageCode.trimmingCharacters(in: CharacterSet(charactersIn: "[]\""))
-            self.currentLanguage = cleanCode
-        } else {
-            // Default to device language
-            self.currentLanguage = Locale.preferredLanguages.first ?? "en"
+    @Published var currentLanguage: String {
+        didSet {
+            UserDefaults.standard.set(currentLanguage, forKey: "app_language")
+            updateLocale()
         }
-        
-        // Apply initial language
-        self.applyLanguage(self.currentLanguage)
-        
-        // Listen for language changes
-        NotificationCenter.default.publisher(for: NSNotification.Name("RegionChanged"))
-            .sink { [weak self] _ in
-                if let languageCode = UserDefaults.standard.string(forKey: "AppleLanguages") {
-                    let cleanCode = languageCode.trimmingCharacters(in: CharacterSet(charactersIn: "[]\""))
-                    self?.currentLanguage = cleanCode
-                    self?.applyLanguage(cleanCode)
-                }
-            }
-            .store(in: &cancellables)
     }
     
-    func applyLanguage(_ languageCode: String) {
-        // Update the Bundle for localization
-        Bundle.setLanguage(languageCode)
-        
-        // Force UI to update by publishing changes
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
+    private init() {
+        // Get the saved language or use the system language
+        if let savedLanguage = UserDefaults.standard.string(forKey: "app_language") {
+            self.currentLanguage = savedLanguage
+        } else {
+            // Get the preferred language from the system
+            if let preferredLanguage = Locale.preferredLanguages.first {
+                self.currentLanguage = preferredLanguage
+            } else {
+                self.currentLanguage = "en" // Default to English
+            }
         }
+        
+        updateLocale()
+    }
+    
+    private func updateLocale() {
+        // Update the app's locale based on the selected language
+        UserDefaults.standard.set([currentLanguage], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+    }
+    
+    // Change the app's language
+    func setLanguage(_ language: String) {
+        currentLanguage = language
+        NotificationCenter.default.post(name: NSNotification.Name("RegionChanged"), object: nil)
     }
 } 

@@ -8,13 +8,43 @@
 import SwiftUI
 
 struct HeroView: View {
+    var heroCard: HeroCard?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: -100) {
-            Image("hero", bundle: .main)
-                .resizable()
-                .scaledToFit()
-                .padding()
-            Text("Featured Items")
+            if let heroCard = heroCard, let url = URL(string: heroCard.imageUrl) {
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                    case .empty:
+                        Image("hero", bundle: .main)
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                    case .failure:
+                        Image("hero", bundle: .main)
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                    @unknown default:
+                        Image("hero", bundle: .main)
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                    }
+                }
+            } else {
+                Image("hero", bundle: .main)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+            }
+            
+            Text(heroCard?.title ?? "Featured Items")
                 .font(.largeTitle)
                 .foregroundStyle(Color(.white))
                 .padding(30)
@@ -24,5 +54,5 @@ struct HeroView: View {
 }
 
 #Preview {
-    HeroView()
+    HeroView(heroCard: HeroCard(title: "Featured Items", imageUrl: "hero", linkTo: "/featured"))
 }

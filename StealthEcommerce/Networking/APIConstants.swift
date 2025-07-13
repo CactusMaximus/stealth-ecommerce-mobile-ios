@@ -27,6 +27,7 @@ struct APIConstants {
         static let orders = "\(baseURL)/orders"
         static let login = "\(baseURL)/users/login"
         static let googleAuth = "\(baseURL)/users/google-auth"
+        static let home = "\(baseURL)/home"
         
         // Device-specific endpoints for connecting to local server
         static let deviceProducts = "\(deviceBaseURL)/products"
@@ -34,6 +35,7 @@ struct APIConstants {
         static let deviceOrders = "\(deviceBaseURL)/orders"
         static let deviceLogin = "\(deviceBaseURL)/users/login"
         static let deviceGoogleAuth = "\(deviceBaseURL)/users/google-auth"
+        static let deviceHome = "\(deviceBaseURL)/home"
     }
     
     // Debug function to print all endpoints
@@ -46,11 +48,13 @@ struct APIConstants {
         print("Orders: \(Endpoints.orders)")
         print("Login: \(Endpoints.login)")
         print("Google Auth: \(Endpoints.googleAuth)")
+        print("Home: \(Endpoints.home)")
         print("Device Products: \(Endpoints.deviceProducts)")
         print("Device Users: \(Endpoints.deviceUsers)")
         print("Device Orders: \(Endpoints.deviceOrders)")
         print("Device Login: \(Endpoints.deviceLogin)")
         print("Device Google Auth: \(Endpoints.deviceGoogleAuth)")
+        print("Device Home: \(Endpoints.deviceHome)")
     }
     
     // Helper function to check if the API server is reachable

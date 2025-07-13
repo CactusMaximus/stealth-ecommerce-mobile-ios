@@ -28,6 +28,7 @@ struct StealthEcommerceApp: App {
     @StateObject private var cartViewModel = CartViewModel()
     @StateObject private var orderViewModel = OrderViewModel()
     @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var homeViewModel = HomeViewModel()
     
     // Register app delegate for handling URL callbacks
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -43,6 +44,7 @@ struct StealthEcommerceApp: App {
                 .environmentObject(cartViewModel)
                 .environmentObject(orderViewModel)
                 .environmentObject(userViewModel)
+                .environmentObject(homeViewModel)
                 .environmentObject(LocalizationManager.shared)
                 .onOpenURL { url in
                     // Handle Google Sign-In callback

@@ -25,7 +25,10 @@ class ProductViewModel: ObservableObject {
     private let networkService = NetworkService.shared
     
     // Available product categories
-    let categories = ["Electronics", "Clothing", "Home & Kitchen", "Books", "Toys", "Beauty", "Sports", "Grocery"]
+    let categories = [
+        "tools", "armor", "resources", "food", "electronics", "clothing", 
+        "home-kitchen", "books", "toys", "beauty", "sports", "grocery"
+    ]
     
     // Fetch all products
     func fetchProducts(completion: @escaping () -> Void = {}) {

@@ -130,7 +130,7 @@ struct CartView: View {
                     .font(.headline)
                 Text("cart.quantity".localized(with: item.quantity))
                     .foregroundStyle(.gray)
-                Text("cart.price_each".localized(with: String(format: "%.2f", item.product.price)))
+                Text("$\(String(format: "%.2f", item.product.price)) each")
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }

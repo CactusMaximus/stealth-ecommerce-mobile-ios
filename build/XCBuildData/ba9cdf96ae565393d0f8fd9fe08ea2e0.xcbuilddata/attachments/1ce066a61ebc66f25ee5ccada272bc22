@@ -1,0 +1,4 @@
+module GoogleSignIn {
+umbrella header "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleSignIn-iOS/GoogleSignIn/Sources/Public/GoogleSignIn/GoogleSignIn.h"
+export *
+}

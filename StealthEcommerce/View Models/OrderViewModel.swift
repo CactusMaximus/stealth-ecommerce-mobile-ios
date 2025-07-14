@@ -28,7 +28,7 @@ class OrderViewModel: ObservableObject {
         // Simulate network delay
         let workItem = DispatchWorkItem {
             self.orders = [
-                Order(
+                Order (
                     id: "ORD123456789",
                     user: UserInfo(id: "user123", email: "demo@example.com", firstName: "John", lastName: "Doe"),
                     items: [

@@ -1,0 +1,4 @@
+module GoogleUtilities_AppDelegateSwizzler {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public"
+export *
+}

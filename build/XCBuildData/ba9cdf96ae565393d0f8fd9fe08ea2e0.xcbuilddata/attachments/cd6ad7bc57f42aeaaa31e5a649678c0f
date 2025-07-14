@@ -1,0 +1,4 @@
+module third_party_IsAppEncrypted {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleUtilities/third_party/IsAppEncrypted/Public"
+export *
+}

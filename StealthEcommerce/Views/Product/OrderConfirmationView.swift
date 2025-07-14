@@ -136,7 +136,16 @@ struct OrderConfirmationView: View {
         .onAppear {
             // Reset error state
             orderError = nil
+            // Track checkout page view
+            AnalyticsManager.shared.trackEvent(
+                name: "begin_checkout",
+                parameters: [
+                    "item_count": cartViewModel.items.count,
+                    "value": cartViewModel.total
+                ]
+            )
         }
+        .trackScreenView(screenName: "Order Confirmation")
         .onChange(of: orderViewModel.errorMessage) { newValue in
             if let errorMessage = newValue {
                 orderError = "Failed to create order: \(errorMessage)"
@@ -169,11 +178,29 @@ struct OrderConfirmationView: View {
             shippingAddress: cartViewModel.shippingAddress
         ) { success in
             if success {
+                // Track purchase event
+                AnalyticsManager.shared.trackEvent(
+                    name: "purchase_complete",
+                    parameters: [
+                        "value": cartViewModel.total,
+                        "currency": "USD",
+                        "payment_type": "standard"
+                    ]
+                )
+                
                 // Clear the cart after successful order
                 cartViewModel.clearCart()
                 orderSuccess = true
             } else if let errorMessage = orderViewModel.errorMessage {
                 orderError = errorMessage
+                
+                // Track checkout error
+                AnalyticsManager.shared.trackEvent(
+                    name: "checkout_error",
+                    parameters: [
+                        "error_message": errorMessage
+                    ]
+                )
             }
         }
     }

@@ -1,0 +1,4 @@
+module nanopb {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/nanopb/spm_headers"
+export *
+}

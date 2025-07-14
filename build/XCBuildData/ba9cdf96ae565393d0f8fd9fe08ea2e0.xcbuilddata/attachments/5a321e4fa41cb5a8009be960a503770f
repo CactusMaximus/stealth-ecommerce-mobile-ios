@@ -1,0 +1,4 @@
+module AppCheckCore {
+umbrella header "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/app-check/AppCheckCore/Sources/Public/AppCheckCore/AppCheckCore.h"
+export *
+}

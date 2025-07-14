@@ -66,6 +66,8 @@ class UserViewModel: ObservableObject {
                     self?.loadUserDataToForm()
                     // Save user session for persistence
                     self?.sessionManager.saveUserSession(user)
+                    // Set user ID for analytics
+                    AnalyticsManager.shared.setUserID(userID: user.id)
                     // In a real app, you would check if the user has admin role
                     // self?.isAdmin = user.isAdmin
                     print("✅ Registered user:", user)
@@ -122,6 +124,8 @@ class UserViewModel: ObservableObject {
                     self?.loadUserDataToForm()
                     // Save user session for persistence
                     self?.sessionManager.saveUserSession(user)
+                    // Set user ID for analytics
+                    AnalyticsManager.shared.setUserID(userID: user.id)
                     // In a real app, you would check if the user has admin role
                     // self?.isAdmin = user.isAdmin
                     print("✅ Logged in user:", user)

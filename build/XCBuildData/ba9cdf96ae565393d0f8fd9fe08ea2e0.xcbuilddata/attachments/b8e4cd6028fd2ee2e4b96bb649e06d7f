@@ -1,0 +1,4 @@
+module AppAuthCore {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/AppAuth-iOS/Sources/AppAuthCore"
+export *
+}

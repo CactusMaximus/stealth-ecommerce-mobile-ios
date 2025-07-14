@@ -97,6 +97,17 @@ struct CartView: View {
                 EmptyView()
             }
         )
+        .onAppear {
+            // Track cart view with item count and value
+            AnalyticsManager.shared.trackEvent(
+                name: "view_cart",
+                parameters: [
+                    "item_count": cartViewModel.items.count,
+                    "cart_value": cartViewModel.subtotal
+                ]
+            )
+        }
+        .trackScreenView(screenName: "Cart")
     }
     
     func cartItemView(for item: CartItem) -> some View {

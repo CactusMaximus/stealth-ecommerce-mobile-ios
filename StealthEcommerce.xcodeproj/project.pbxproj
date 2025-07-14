@@ -11,6 +11,7 @@
 		0D9EED492E2433400018E076 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9EED482E2433400018E076 /* GoogleSignInSwift */; };
 		0D9EED4C2E2434630018E076 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9EED4B2E2434630018E076 /* FirebaseAuth */; };
 		0D9EED4E2E2434630018E076 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9EED4D2E2434630018E076 /* FirebaseCore */; };
+		0D9EED502E2434630018E079 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9EED4F2E2434630018E079 /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 				0D9EED4C2E2434630018E076 /* FirebaseAuth in Frameworks */,
 				0D9EED4E2E2434630018E076 /* FirebaseCore in Frameworks */,
 				0D9EED492E2433400018E076 /* GoogleSignInSwift in Frameworks */,
+				0D9EED502E2434630018E079 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,7 @@
 				0D9EED482E2433400018E076 /* GoogleSignInSwift */,
 				0D9EED4B2E2434630018E076 /* FirebaseAuth */,
 				0D9EED4D2E2434630018E076 /* FirebaseCore */,
+				0D9EED4F2E2434630018E079 /* FirebaseAnalytics */,
 			);
 			productName = StealthEcommerce;
 			productReference = 0D9EEC612E1ECCEE0018E076 /* StealthEcommerce.app */;
@@ -402,6 +405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D9EED4A2E24341A0018E076 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		0D9EED4F2E2434630018E079 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9EED4A2E24341A0018E076 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

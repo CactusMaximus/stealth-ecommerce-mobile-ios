@@ -132,6 +132,9 @@ struct ProfileView: View {
         }
         .onAppear {
             fetchUserData()
+            
+            // Track profile view
+            AnalyticsManager.shared.trackScreenView(screenName: "Profile", screenClass: "ProfileView")
         }
     }
     
@@ -191,7 +194,13 @@ struct ProfileView: View {
     }
     
     private func logout() {
-        // Use the UserViewModel's logout method instead of manually clearing data
+        // Track logout event
+        AnalyticsManager.shared.trackEvent(name: "logout")
+        
+        // Clear user ID in analytics
+        AnalyticsManager.shared.setUserID(userID: nil)
+        
+        // Clear user data
         userViewModel.logout()
     }
     

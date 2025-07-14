@@ -1,0 +1,4 @@
+module GoogleAppMeasurementTarget {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleAppMeasurement/GoogleAppMeasurementWrapper/include"
+export *
+}

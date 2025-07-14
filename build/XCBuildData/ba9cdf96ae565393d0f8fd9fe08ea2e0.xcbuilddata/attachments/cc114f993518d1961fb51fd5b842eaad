@@ -1,0 +1,4 @@
+module FirebaseAuthInterop {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/firebase-ios-sdk/FirebaseAuth/Interop/Public"
+export *
+}

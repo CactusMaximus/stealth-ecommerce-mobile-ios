@@ -161,6 +161,20 @@ struct ProductDetailView: View {
         }
         .navigationTitle("Product Details")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            // Track product view
+            AnalyticsManager.shared.trackEvent(
+                name: AnalyticsConstants.eventViewItem,
+                parameters: [
+                    AnalyticsConstants.parameterItemID: product.id,
+                    AnalyticsConstants.parameterItemName: product.name,
+                    AnalyticsConstants.parameterPrice: product.price,
+                    AnalyticsConstants.parameterCurrency: "USD",
+                    "category": product.category
+                ]
+            )
+        }
+        .trackScreenView(screenName: "Product Detail: \(product.name)")
     }
     
     private func validateQuantity(_ value: String) {
@@ -210,6 +224,9 @@ struct ProductDetailView: View {
         
         // Reset quantity field
         quantity = "1"
+        
+        // Track add to cart
+        AnalyticsManager.shared.trackAddToCart(product: product, quantity: quantityInt)
     }
 }
 

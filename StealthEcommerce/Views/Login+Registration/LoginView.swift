@@ -163,17 +163,16 @@ struct LoginView: View {
             refreshToggle.toggle()
         }
         .id(refreshToggle) // Force view recreation when this changes
-        .onChange(of: viewModel.message) { newValue in
-            if newValue == "Success" {
+        .onChange(of: viewModel.message) { message in
+            if message == "Success" {
                 goToHome = true
-            } else if newValue == "Failure" {
-                if let errorDetails = viewModel.errorDetails {
-                    loginMessage = "Login failed: \(errorDetails)"
-                } else {
-                    loginMessage = "Invalid email or password"
-                }
+                // Track successful login
+                AnalyticsManager.shared.trackLogin(method: "email")
+            } else if let error = viewModel.errorDetails {
+                loginMessage = error
             }
         }
+        .trackScreenView(screenName: "Login")
     }
     
     func validateUsername() -> Bool {
@@ -204,16 +203,23 @@ struct LoginView: View {
         return true
     }
     
-    func handleLogin() {
+    private func handleLogin() {
+        // Set validating to true to trigger validation
         isValidating = true
-        loginMessage = nil
         
-        let isEmailValid = validateEmail()
-        let isPasswordValid = validatePassword()
-        if !isEmailValid || !isPasswordValid {
+        // Validate fields
+        validateEmail()
+        validatePassword()
+        
+        // Check if any validation errors
+        if !emailError.isEmpty || !passwordError.isEmpty {
             return
         }
         
+        // Track login attempt
+        AnalyticsManager.shared.trackEvent(name: "login_attempt", parameters: ["method": "email"])
+        
+        // Proceed with login
         viewModel.loginUser(email: email, password: password)
     }
     

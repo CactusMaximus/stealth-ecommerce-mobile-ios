@@ -8,11 +8,21 @@
 import SwiftUI
 import UIKit
 import FirebaseCore
+#if canImport(FirebaseAnalytics)
+import FirebaseAnalytics
+#endif
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // Configure Firebase
         FirebaseApp.configure()
+        
+        // Enable Analytics data collection if available
+        #if canImport(FirebaseAnalytics)
+        Analytics.setAnalyticsCollectionEnabled(true)
+        print("✅ Firebase Analytics configured")
+        #endif
+        
         // App initialization
         return true
     }

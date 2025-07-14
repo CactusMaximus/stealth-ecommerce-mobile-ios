@@ -1,0 +1,4 @@
+module FirebaseAppCheckInterop {
+umbrella header "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/firebase-ios-sdk/FirebaseAppCheck/Interop/Public/FirebaseAppCheckInterop/FirebaseAppCheckInterop.h"
+export *
+}

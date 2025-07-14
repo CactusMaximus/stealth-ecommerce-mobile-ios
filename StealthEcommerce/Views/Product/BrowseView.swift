@@ -134,7 +134,26 @@ struct BrowseView: View {
             }) {
                 AddProductView()
             }
-            .onAppear(perform: fetchProducts)
+            .onAppear {
+                fetchProducts()
+                
+                // Track category filter if present
+                if let category = selectedCategory {
+                    AnalyticsManager.shared.trackEvent(
+                        name: "browse_category",
+                        parameters: ["category": category]
+                    )
+                }
+                
+                // Track search query if present
+                if !searchText.isEmpty {
+                    AnalyticsManager.shared.trackEvent(
+                        name: "product_search",
+                        parameters: ["query": searchText]
+                    )
+                }
+            }
+            .trackScreenView(screenName: "Browse", screenClass: "BrowseView")
             .onChange(of: searchText) { _, newValue in
                 filterProducts()
             }

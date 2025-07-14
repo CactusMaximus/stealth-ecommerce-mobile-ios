@@ -1,0 +1,4 @@
+module GoogleUtilities_Environment {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/Environment/Public"
+export *
+}

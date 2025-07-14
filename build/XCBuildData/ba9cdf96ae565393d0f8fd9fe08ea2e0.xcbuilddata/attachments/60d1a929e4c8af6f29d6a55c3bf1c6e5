@@ -1,0 +1,4 @@
+module FirebaseCore {
+umbrella header "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h"
+export *
+}

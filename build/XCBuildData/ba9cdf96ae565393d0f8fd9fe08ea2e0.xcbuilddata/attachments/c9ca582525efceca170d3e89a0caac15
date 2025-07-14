@@ -1,0 +1,458 @@
+{
+  "" : {
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerce-master.dia",
+    "emit-module-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerce-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerce-master-emit-module.dia",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerce-master.swiftdeps"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/Address.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Address~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/CartItem.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartItem~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/Category.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Category~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/LoginRequest.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginRequest~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/Order.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Order~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/OrderItem.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderItem~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/Product.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/Product~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Models/User.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/User~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Networking/APIConstants.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/APIConstants~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Networking/NetworkService.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/NetworkService~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/StealthEcommerceApp.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/StealthEcommerceApp~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/AnalyticsManager.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsManager~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/AnalyticsViewModifier.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AnalyticsViewModifier~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/GoogleSignInManager.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInManager~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/LocalizationExtensions.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationExtensions~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/LocalizationManager.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LocalizationManager~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/RegionHelper.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionHelper~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/RegionSelectorView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegionSelectorView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Utilities/UserSessionManager.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserSessionManager~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/View Models/CartViewModel.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartViewModel~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/View Models/HomeViewModel.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HomeViewModel~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/View Models/OrderViewModel.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderViewModel~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/View Models/ProductViewModel.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductViewModel~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/View Models/UserViewModel.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/UserViewModel~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Category/CategoryView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategoryView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Category/CategpriesView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CategpriesView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Category/HeroView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/HeroView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/LanguageFlagView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LanguageFlagView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Login+Registration/GoogleSignInButton.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GoogleSignInButton~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Login+Registration/LoginView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/LoginView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Login+Registration/ProfileDetailsView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileDetailsView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Login+Registration/RegistrationView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RegistrationView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Login+Registration/ValidationMessageView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ValidationMessageView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/AddProductView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/AddProductView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/BrowseView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/BrowseView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/CartView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/CartView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/OrderConfirmationView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderConfirmationView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/OrderHistoryView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/OrderHistoryView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/ProductDetailView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductDetailView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/ProductManagementView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProductManagementView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/Product/ShippingAddressView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ShippingAddressView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/ProfileView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/ProfileView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/RestartAppView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/RestartAppView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/StealthEcommerce/Views/SettingsView.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/shamithramdhani/Documents/GitHub/stealth-ecommerce-mobile-ios/build/StealthEcommerce.build/Debug-iphonesimulator/StealthEcommerce.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

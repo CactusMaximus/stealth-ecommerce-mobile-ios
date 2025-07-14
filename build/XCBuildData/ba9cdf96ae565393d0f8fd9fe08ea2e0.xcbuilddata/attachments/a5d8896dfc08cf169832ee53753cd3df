@@ -1,0 +1,4 @@
+module GoogleUtilities_NSData {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/NSData+zlib/Public"
+export *
+}

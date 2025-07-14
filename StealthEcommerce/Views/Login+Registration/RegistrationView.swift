@@ -162,6 +162,23 @@ struct RegistrationView: View {
             refreshToggle.toggle()
         }
         .id(refreshToggle) // Force view recreation when this changes
+        .onChange(of: viewModel.message) { message in
+            if message == "Success" {
+                navigateToLogin = true
+                // Track successful registration
+                AnalyticsManager.shared.trackSignUp(method: "email")
+            } else if message == "Failure" {
+                // Handle registration failure
+                if let errorDetails = viewModel.errorDetails {
+                    if errorDetails.contains("duplicate") {
+                        emailError = "Email already in use. Please use a different email or try logging in."
+                    } else {
+                        showError = true
+                    }
+                }
+            }
+        }
+        .trackScreenView(screenName: "Registration")
     }
     
     // Validation functions

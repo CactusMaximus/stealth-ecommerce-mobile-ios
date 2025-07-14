@@ -1,0 +1,4 @@
+module GoogleUtilities_Logger {
+umbrella "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/Logger/Public"
+export *
+}

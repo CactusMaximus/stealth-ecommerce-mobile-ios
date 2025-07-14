@@ -1,0 +1,4 @@
+module FirebaseInstallations {
+umbrella header "/Users/shamithramdhani/Library/Developer/Xcode/DerivedData/StealthEcommerce-hctfzxwxyqzbrqggfucnxhouyijo/SourcePackages/checkouts/firebase-ios-sdk/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FirebaseInstallations.h"
+export *
+}

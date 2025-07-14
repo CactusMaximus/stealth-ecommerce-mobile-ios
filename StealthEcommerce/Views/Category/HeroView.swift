@@ -46,7 +46,7 @@ struct HeroView: View {
             
             Text(heroCard?.title ?? "Featured Items")
                 .font(.largeTitle)
-                .foregroundStyle(Color(.white))
+                .foregroundStyle(Color(.gray))
                 .padding(30)
                 .bold()
         }.padding(-20)

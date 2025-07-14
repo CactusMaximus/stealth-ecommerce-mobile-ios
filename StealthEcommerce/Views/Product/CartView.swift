@@ -101,7 +101,30 @@ struct CartView: View {
     
     func cartItemView(for item: CartItem) -> some View {
         HStack {
-            Image("avo").resizable().scaledToFit().frame(width: 80).padding(.trailing, 10)
+            AsyncImage(url: URL(string: item.product.imageUrl)) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(width: 80, height: 80)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                case .failure:
+                    Image("avo") // Fallback image if loading fails
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                @unknown default:
+                    Image("avo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                }
+            }
+            .padding(.trailing, 10)
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.product.name)
                     .font(.headline)

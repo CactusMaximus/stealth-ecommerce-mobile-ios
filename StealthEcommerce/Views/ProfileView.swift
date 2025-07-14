@@ -191,24 +191,8 @@ struct ProfileView: View {
     }
     
     private func logout() {
-        // Clear user data
-        print("User logged out")
-        
-        // Clear the current user data
-        userViewModel.currentUser = nil
-        
-        // Reset form data
-        userViewModel.firstName = ""
-        userViewModel.lastName = ""
-        userViewModel.email = ""
-        userViewModel.street = ""
-        userViewModel.city = ""
-        userViewModel.state = ""
-        userViewModel.zipCode = ""
-        
-        // Clear any error messages
-        userViewModel.errorDetails = nil
-        userViewModel.message = nil
+        // Use the UserViewModel's logout method instead of manually clearing data
+        userViewModel.logout()
     }
     
     // For demo purposes only - in a real app, this would be handled by proper authentication
@@ -233,6 +217,9 @@ struct ProfileView: View {
         
         userViewModel.currentUser = demoUser
         userViewModel.loadUserDataToForm()
+        
+        // Save the demo user to session storage
+        UserSessionManager.shared.saveUserSession(demoUser)
     }
 }
 

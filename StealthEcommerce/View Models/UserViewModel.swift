@@ -30,6 +30,7 @@ class UserViewModel: ObservableObject {
     
     private var networkService: NetworkService
     private var googleSignInManager = GoogleSignInManager.shared
+    private var sessionManager = UserSessionManager.shared
     
     // Define EmptyRequest struct for GET requests
     struct EmptyRequest: Codable {}
@@ -42,6 +43,13 @@ class UserViewModel: ObservableObject {
         #if DEBUG
         isAdmin = true
         #endif
+        
+        // Load saved user session if available
+        if let savedUser = sessionManager.loadUserSession() {
+            self.currentUser = savedUser
+            self.loadUserDataToForm()
+            print("✅ Restored user session for: \(savedUser.email)")
+        }
     }
     
     //POST User - Create a user
@@ -56,6 +64,8 @@ class UserViewModel: ObservableObject {
                     self?.message = "Success"
                     self?.currentUser = user
                     self?.loadUserDataToForm()
+                    // Save user session for persistence
+                    self?.sessionManager.saveUserSession(user)
                     // In a real app, you would check if the user has admin role
                     // self?.isAdmin = user.isAdmin
                     print("✅ Registered user:", user)
@@ -110,6 +120,8 @@ class UserViewModel: ObservableObject {
                     self?.message = "Success"
                     self?.currentUser = user
                     self?.loadUserDataToForm()
+                    // Save user session for persistence
+                    self?.sessionManager.saveUserSession(user)
                     // In a real app, you would check if the user has admin role
                     // self?.isAdmin = user.isAdmin
                     print("✅ Logged in user:", user)
@@ -152,6 +164,31 @@ class UserViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    // Logout user and clear session data
+    func logout() {
+        // Clear user data
+        print("User logged out")
+        
+        // Clear the current user data
+        currentUser = nil
+        
+        // Clear session data from UserDefaults
+        sessionManager.clearUserSession()
+        
+        // Reset form data
+        firstName = ""
+        lastName = ""
+        email = ""
+        street = ""
+        city = ""
+        state = ""
+        zipCode = ""
+        
+        // Clear any error messages
+        errorDetails = nil
+        message = nil
     }
     
     // GET User - Fetch user details by ID
@@ -342,9 +379,40 @@ class UserViewModel: ObservableObject {
     private func authenticateGoogleUser(googleUser: GoogleUser) {
         isLoading = true
         
-        // Convert Google user to our User model and register directly
-        let newUser = googleUser.toAppUser()
-        createUser(user: newUser)
+        // For a real backend, you would send the Google ID token to your server
+        // and verify it there. For this demo, we'll simulate a successful authentication.
+        
+        // Create a user response directly
+        let address = Address(
+            street: "Google User Street",
+            city: "Mountain View",
+            state: "CA",
+            zipCode: "94043"
+        )
+        
+        let user = UserResponse(
+            email: googleUser.email,
+            firstName: googleUser.firstName,
+            lastName: googleUser.lastName,
+            address: address,
+            _id: googleUser.id,
+            createdAt: ISO8601DateFormatter().string(from: Date()),
+            updatedAt: ISO8601DateFormatter().string(from: Date()),
+            __v: 0
+        )
+        
+        // Update the current user and save session
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.message = "Success"
+            self.currentUser = user
+            self.loadUserDataToForm()
+            
+            // Save the user session for persistence
+            self.sessionManager.saveUserSession(user)
+            
+            print("✅ Google user authenticated: \(user.email)")
+        }
     }
     
     // Load user data to form fields for editing

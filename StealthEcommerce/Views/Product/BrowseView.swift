@@ -26,8 +26,8 @@ struct BrowseView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                // Search bar
+            VStack(spacing: 0) {
+                // Search bar at the top
                 searchBar
                 
                 if isLoading {
@@ -50,6 +50,7 @@ struct BrowseView: View {
                         .cornerRadius(10)
                     }
                     .padding()
+                    Spacer()
                 } else if filteredProducts.isEmpty {
                     VStack(spacing: 20) {
                         Image(systemName: "questionmark.circle")
@@ -77,6 +78,7 @@ struct BrowseView: View {
                         .cornerRadius(10)
                     }
                     .padding()
+                    Spacer()
                 } else {
                     List {
                         ForEach(filteredProducts) { product in
@@ -157,7 +159,7 @@ struct BrowseView: View {
             }
         }
         .padding(.horizontal)
-        .padding(.top, 8)
+        .padding(.vertical, 8)
     }
     
     private func filterProducts() {
